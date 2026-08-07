@@ -4,14 +4,10 @@ dotenv.config({ path: '.env' })
 
 import express from "express";
 
-import { router as routerFromapi } from './api/routes.js';
-
 import setupRoutes from "./routes.js";
 import startServer from "./server.js";
 
 const app = express()
-
-app.use('/api', routerFromapi);
 
 setupRoutes(app);
 
