@@ -19,7 +19,23 @@ const getItemsArray = async ({ columnName, inTablePath }) => {
             });
         });
 
-        return returnArray;
+
+        // Use a Set to track seen combinations
+        const seenKeys = new Set();
+
+        const uniqueBatches = returnArray.filter(item => {
+            // Use a unique delimiter like '||' to join keys safely
+            const compositeKey = `${item.stockitemname}||${item.batchname}`;
+
+            if (seenKeys.has(compositeKey)) {
+                return false; // Skip duplicate combination
+            }
+
+            seenKeys.add(compositeKey);
+            return true; // Keep unique combination
+        });
+
+        return uniqueBatches;
 
     } catch (error) {
         console.log("eeeee : ", error);
