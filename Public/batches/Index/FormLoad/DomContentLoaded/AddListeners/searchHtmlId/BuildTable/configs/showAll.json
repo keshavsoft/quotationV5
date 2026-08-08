@@ -1,0 +1,94 @@
+{
+    "containerId": "kSHeadContainer",
+    "tableName": "Batches",
+    "mode": "create",
+    "layout": {
+        "verticalPosition": "top",
+        "type": "table"
+    },
+    "options": {
+        "firstRow": {
+            "showSearch": true
+        },
+        "enabledSections": [
+            "vertical",
+            "table",
+            "footer"
+        ],
+        "table": {
+            "showFooterRows": true,
+            "showDataList": true,
+            "showSave": true,
+            "showActions": true,
+            "showSerial": true,
+            "showFooter": true,
+            "footer": {
+                "showAggregateRows": true,
+                "showTotals": true
+            },
+            "body": {
+                "showEdit": true,
+                "showDelete": false,
+                "showShow": true,
+                "deleteType": "icon",
+                "deleteIconSize": "xl"
+            }
+        }
+    },
+    "callbacks": {
+        "table": {
+            "onDelete1": "function",
+            "onReadFail": "function",
+            "body": {
+                "update": "function",
+                "show": "function",
+                "edit": "function"
+            },
+            "footer": {
+                "onSave": "function"
+            }
+        }
+    },
+    "endPoints": {
+        "create": "/Api/v5/BillsTable/insertWithMeta",
+        "update": "",
+        "delete": "/Api/v5/BillsTable/del",
+        "read": "/api/v2/purchases/getInventoryArray",
+        "read2": "/api/v2/purchases/showAll",
+        "read1": "/Api/V1/ItemsTable/ShowAll",
+        "find": "",
+        "filter": "",
+        "dataLists": {},
+        "dataListEndpoints": {}
+    },
+    "columnsConfig": [
+        {
+            "columnName": "stockitemname",
+            "title": "stockitemname",
+            "field": "stockitemname",
+            "cellConfig": {
+                "width": "150px"
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "batchname",
+            "title": "batchname",
+            "field": "batchname",
+            "cellConfig": {
+                "width": "150px"
+            },
+            "isConsider": false,
+            "isVisible": true
+        },
+        {
+            "field": "pk",
+            "title": "pk",
+            "primary": true,
+            "isVisible": false
+        }
+    ],
+    "defaults": {
+        "data": []
+    }
+}

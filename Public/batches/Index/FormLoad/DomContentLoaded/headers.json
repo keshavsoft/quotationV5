@@ -20,6 +20,16 @@
             "svgName": "arrowDown"
         },
         {
+            "text": "search",
+            "id": "searchHtmlId",
+            "icon": [],
+            "uiClasses": {
+                "aClass": "",
+                "svgDivClass": "size-10"
+            },
+            "svgName": "arrowDown"
+        },
+        {
             "text": "crud",
             "id": "crudHtmlId",
             "icon": [],
