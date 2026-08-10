@@ -35,7 +35,8 @@ const startFunc = ({
         inSerialWidth: serialWidth,
         inShowActions: showActions, inShowShow,
         inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize,
-        inFirstRow: options?.firstRow, dataStore
+        inFirstRow: options?.firstRow, dataStore,
+        inConfig
     });
 
     tableCodeOnly({

@@ -1,5 +1,5 @@
 {
-    "containerId": "kSHeadContainer",
+    "containerId": "kSTableContainer",
     "tableName": "Estimations",
     "mode": "create",
     "layout": {

@@ -1,7 +1,7 @@
 import allColumns from "../builders/buildHeaderRow/allColumns/index.js";
 import columnWiseSearch from "../builders/buildHeaderRow/columnWiseSearch/index.js";
 
-const startFunc = ({ inFirstRow, inTableName, dataStore }) => {
+const startFunc = ({ inFirstRow, inTableName, dataStore, inConfig }) => {
     if (inFirstRow?.allColumns) {
         const fromBuildHeaderRow = allColumns({ inTitleText: inTableName });
 
@@ -11,7 +11,7 @@ const startFunc = ({ inFirstRow, inTableName, dataStore }) => {
     if (inFirstRow?.columnWiseSearch) {
         const fromColumnWiseSearch = columnWiseSearch({
             inTitleText: inTableName,
-            dataStore
+            dataStore, inConfig
         });
 
         return fromColumnWiseSearch;
