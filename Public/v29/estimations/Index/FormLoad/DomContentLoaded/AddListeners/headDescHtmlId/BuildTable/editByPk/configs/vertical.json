@@ -59,9 +59,7 @@
         "create": "/api/v5/BillsTable/insertWithMeta",
         "update": "/api/v6/BillsTable/modify",
         "delete": "/api/v5/BillsTable/del",
-        "read2": "/api/V5/BillsTable/ShowAll",
-        "read1": "/api/V1/ItemsTable/ShowAll",
-        "findFromParams": "/api/v5/BillsTable/find/<pk>",
+        "findFromParams": "/api/v2/BillsTable/find/<pk>",
         "filter": "",
         "dataLists": {},
         "dataListEndpoints": {}

@@ -7,6 +7,7 @@ import getInventoryColumn from './getInventoryColumn/controller.js';
 import getInventoryArray from './getInventoryArray/controller.js';
 import getBatchTree from './getBatchTree/controller.js';
 import funcFromlastRecord from './lastRecord/controller.js';
+import funcFromfind from './find/controller.js';
 
 import funcFrominsert from './insertWithMeta/controller.js';
 
@@ -23,6 +24,7 @@ router.get('/getInventoryColumn', (req, res) => getInventoryColumn({ req, res, i
 router.get('/getInventoryArray', (req, res) => getInventoryArray({ req, res, inTablePath: tablePath }));
 router.get('/getBatchTree', (req, res) => getBatchTree({ req, res, inTablePath: tablePath }));
 router.get('/lastRecord', (req, res) => funcFromlastRecord({ req, res, inTablePath: tablePath }));
+router.get('/find/:pk', (req, res) => funcFromfind({ req, res, inTablePath: tablePath }));
 
 router.post('/insertWithMeta', express.json(), (req, res) => funcFrominsert({ req, res, inTablePath: tablePath, inConfigPath: configPath }));
 

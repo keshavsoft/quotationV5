@@ -54,7 +54,7 @@
         "dataLists": {},
         "dataListEndpoints": {
             "StockItems": "/api/v2/StockItems/showAll",
-            "Batches": "/v2/purchases/getInventoryArray"
+            "Batches": "/api/v2/purchases/getInventoryArray"
         }
     },
     "columnsConfig1": [
