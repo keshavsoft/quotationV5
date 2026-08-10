@@ -12,9 +12,9 @@ import funcFromgroupBy from './groupBy/controller.js';
 
 import funcFrominsert from './insertWithMeta/controller.js';
 
-const tableName = "BillsTable.json";
-const tablePath = "Data/BillsTable.json";
-const configPath = "Config/Schemas/BillsTable.json";
+const tableName = "ItemsTable.json";
+const tablePath = "Data/ItemsTable.json";
+const configPath = "Config/Schemas/ItemsTable.json";
 
 const router = express.Router();
 
