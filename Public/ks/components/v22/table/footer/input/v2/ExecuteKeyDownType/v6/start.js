@@ -1,7 +1,7 @@
-import commonFuncToRun from "./commonFunc/index.js";
+import commonFuncToRun from "./switchFunc/index.js";
 
 const executeKeyDownType = ({
-    currentInput,
+    currentInput, inOptions,
     inDefaultRow, closestTagIsTr
 }) => {
     let closestControl;
@@ -22,7 +22,8 @@ const executeKeyDownType = ({
         // console.log("onKeyDownType : ", onKeyDownType);
 
         commonFuncToRun({
-            currentInput, inClosestControl: closestControl
+            currentInput, inClosestControl: closestControl,
+            inOnKeyDownType: onKeyDownType, inOptions
         });
     };
 };

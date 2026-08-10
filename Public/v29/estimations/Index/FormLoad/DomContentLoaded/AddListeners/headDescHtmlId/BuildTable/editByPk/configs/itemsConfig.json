@@ -70,12 +70,14 @@
                 "footerConfig": {
                     "enterAsTab": true,
                     "isNotEmpty": true,
-                    "onKeyDownType": "ItemName"
+                    "onKeyDownType": "dataListDynamic",
+                    "evalToControl": "Batch",
+                    "allowOnChange": true
                 }
             },
             "isVisible": true,
             "tableFooterDataListShow": true,
-            "dataListSource": "StockItems.StockItemName",
+            "dataListSource": "StockItems.stockitemname",
             "allowOnChange": true,
             "onChangeType": "onDataListChange"
         },

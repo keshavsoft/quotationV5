@@ -31,7 +31,7 @@ class KsTableFooterInputCore extends HTMLElement {
             inRightAlign: localOptions.inRightAlign,
             inWidth: localOptions.inWidth
         });
-        // console.log("localOptions : ", localOptions);
+        // console.log("inDataStore : ", Object.keys(localOptions?.inDataStore?.getDataList));
 
         const localInput = createTextInput(localOptions);
 
