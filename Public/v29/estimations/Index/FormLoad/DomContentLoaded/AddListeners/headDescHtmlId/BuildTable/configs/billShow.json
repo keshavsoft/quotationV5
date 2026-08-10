@@ -1,6 +1,6 @@
 {
     "containerId": "kSHeadContainer",
-    "tableName": "Quotations",
+    "tableName": "Estimations",
     "mode": "create",
     "layout": {
         "verticalPosition": "top",
@@ -8,7 +8,7 @@
     },
     "options": {
         "firstRow": {
-            "showSearch": false
+            "showSearch": true
         },
         "enabledSections": [
             "vertical",
