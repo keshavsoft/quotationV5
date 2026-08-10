@@ -8,7 +8,9 @@
     },
     "options": {
         "firstRow": {
-            "showSearch": true
+            "showSearch": true,
+            "allColumns": false,
+            "columnWiseSearch": true
         },
         "enabledSections": [
             "vertical",
@@ -29,7 +31,7 @@
             "body": {
                 "showEdit": true,
                 "showDelete": false,
-                "showShow": true,
+                "showShow": false,
                 "deleteType": "icon",
                 "deleteIconSize": "xl"
             }
@@ -95,7 +97,8 @@
             "isVisible": true,
             "cellConfig": {
                 "width": "150px"
-            }
+            },
+            "isSearchable": true
         },
         {
             "columnName": "InvoiceDate",

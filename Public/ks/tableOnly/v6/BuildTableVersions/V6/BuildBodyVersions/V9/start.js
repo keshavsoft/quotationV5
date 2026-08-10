@@ -12,6 +12,7 @@ const buildBody = ({ inVisibleColumnsConfig, inTableBody, inData,
     const oldShowSerial = tableBody.getAttribute("ks-showSerial");
     const showEdit = tableBody.getAttribute("ks-showEdit");
     const showDelete = tableBody.getAttribute("ks-showDelete");
+    const showShow = tableBody.getAttribute("ks-showShow");
     const deleteType = tableBody.getAttribute("ks-deleteType");
     const deleteIconSize = tableBody.getAttribute("ks-deleteIconSize");
 
@@ -30,6 +31,7 @@ const buildBody = ({ inVisibleColumnsConfig, inTableBody, inData,
             inShowActions: oldShowActions === "true",
             inShowEdit: showEdit,
             inShowDelete: showDelete,
+            inShowShow: showShow,
             inDeleteType: deleteType,
             inDeleteIconSize: deleteIconSize,
             handlers

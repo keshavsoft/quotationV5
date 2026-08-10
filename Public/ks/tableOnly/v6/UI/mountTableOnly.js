@@ -25,7 +25,8 @@ const startFunc = ({
     const inShowDelete = options?.table?.body?.showDelete;
     const inDeleteType = options?.table?.body?.deleteType;
     const inDeleteIconSize = options?.table?.body?.deleteIconSize;
-
+    const firstRow = options?.firstRow;
+    // debugger;
     buildFullUI({
         containerEl: containerEl,
         inTableName: inConfig.tableName,
@@ -33,7 +34,8 @@ const startFunc = ({
         inShowSerial: showSerial,
         inSerialWidth: serialWidth,
         inShowActions: showActions, inShowShow,
-        inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize
+        inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize,
+        inFirstRow: options?.firstRow, dataStore
     });
 
     tableCodeOnly({
@@ -47,8 +49,10 @@ const startFunc = ({
     });
 
     if (showSearch) {
-        // for search vertical
-        searchFuncs({ inContainerEl: containerEl });
+        searchFuncs({
+            inContainerEl: containerEl,
+            inFirstRow: options?.firstRow
+        });
     };
 
     setFocus({ inContainerEl: containerEl });

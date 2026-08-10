@@ -1,4 +1,4 @@
-export const buildHeaderRow = ({ inTitleText = "Items" } = {}) => {
+const startFunc = ({ inTitleText = "Items" } = {}) => {
     const titleText = inTitleText;
 
     const header = createHeaderRoot();
@@ -76,3 +76,5 @@ const createSearchIcon = () => {
 
     return svg;
 };
+
+export default startFunc; 
