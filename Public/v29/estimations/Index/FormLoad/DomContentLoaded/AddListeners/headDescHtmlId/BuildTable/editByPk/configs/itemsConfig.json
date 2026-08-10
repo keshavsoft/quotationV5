@@ -69,7 +69,8 @@
             "tableConfig": {
                 "footerConfig": {
                     "enterAsTab": true,
-                    "isNotEmpty": true
+                    "isNotEmpty": true,
+                    "onKeyDownType": "ItemName"
                 }
             },
             "isVisible": true,
@@ -90,11 +91,12 @@
             "tableConfig": {
                 "footerConfig": {
                     "enterAsTab": true,
-                    "isNotEmpty": true
+                    "isNotEmpty": true,
+                    "onKeyDownType": "Batch"
                 }
             },
             "isVisible": true,
-            "tableFooterDataListShow": true,
+            "tableFooterDataListShow": false,
             "dataListSource": "Batches.batchname",
             "allowOnChange": true,
             "onChangeType": "onDataListChange"
@@ -138,9 +140,6 @@
             },
             "isVisible": true,
             "tableFooterDataListShow": true,
-            "allowOnChange": true,
-            "onKeyDown": true,
-            "onKeyDownType": "Qty",
             "type": "number"
         },
         {

@@ -4,7 +4,7 @@ import { onSuccess } from "./helpers/ks/onSuccess.js";
 import config from "./configs/config.json" with {type: "json"};
 
 const getLastQuotation = async () => {
-    const fromFetch = await fetch("/api/v6/BillsTable/lastRecord")
+    const fromFetch = await fetch(config?.endPoints?.lastRecord)
     const data = await fromFetch.json();
     return data;
 };
@@ -23,8 +23,6 @@ const startFunc = async () => {
         jFLocalToInputhtmlId(`last ${res.pk}`);
         // console.log(res);
     });
-
-    // const config = await getKSTableConfig();
 
     window.ksVertical = initVertical(config, onSuccess);
 

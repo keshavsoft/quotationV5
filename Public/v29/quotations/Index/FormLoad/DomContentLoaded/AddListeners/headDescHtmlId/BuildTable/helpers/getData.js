@@ -1,12 +1,14 @@
+import ConfigJson from '../configs/billShow.json' with {type: 'json'};
+
 export const getData = async () => {
-    const config = await fetch("/api/v4/ItemsTable/groupBy");
+    const config = await fetch(ConfigJson?.endPoints?.groupBy);
     const data = await config.json();
 
     return await data;
 };
 
 export const getHeadData = async () => {
-    const config = await fetch("/api/v5/BillsTable/showAll");
+    const config = await fetch(ConfigJson?.endPoints?.read);
     const data = await config.json();
 
     return await data;

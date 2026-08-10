@@ -31,10 +31,19 @@
             "body": {
                 "showEdit": true,
                 "showDelete": false,
-                "showShow": false,
+                "showShow": true,
                 "deleteType": "icon",
                 "deleteIconSize": "xl"
             }
+        },
+        "vertical": {
+            "isCreate": true,
+            "isEdit": false,
+            "layoutType": "inputsInline",
+            "layoutType2": "singleLine",
+            "layoutType3": "labelAbove",
+            "layoutType4": "labelAbove",
+            "showButtons": false
         }
     },
     "callbacks": {
@@ -98,7 +107,22 @@
             "cellConfig": {
                 "width": "150px"
             },
-            "isSearchable": true
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": true,
+            "verticalConfig": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1"
+            },
+            "isConsider": true
         },
         {
             "columnName": "InvoiceDate",
@@ -108,7 +132,23 @@
             "isVisible": true,
             "cellConfig": {
                 "width": "100px"
-            }
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": true,
+            "verticalConfig": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1"
+            },
+            "isConsider": true
         },
         {
             "columnName": "line",

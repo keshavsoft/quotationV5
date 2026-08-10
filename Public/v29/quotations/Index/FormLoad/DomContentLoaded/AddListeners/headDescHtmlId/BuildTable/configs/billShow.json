@@ -1,6 +1,6 @@
 {
-    "containerId": "kSHeadContainer",
-    "tableName": "Quotations",
+    "containerId": "kSTableContainer",
+    "tableName": "Estimations",
     "mode": "create",
     "layout": {
         "verticalPosition": "top",
@@ -8,7 +8,9 @@
     },
     "options": {
         "firstRow": {
-            "showSearch": false
+            "showSearch": true,
+            "allColumns": false,
+            "columnWiseSearch": true
         },
         "enabledSections": [
             "vertical",
@@ -33,6 +35,15 @@
                 "deleteType": "icon",
                 "deleteIconSize": "xl"
             }
+        },
+        "vertical": {
+            "isCreate": true,
+            "isEdit": false,
+            "layoutType": "inputsInline",
+            "layoutType2": "singleLine",
+            "layoutType3": "labelAbove",
+            "layoutType4": "labelAbove",
+            "showButtons": false
         }
     },
     "callbacks": {
@@ -53,7 +64,8 @@
         "create": "/Api/v5/BillsTable/insertWithMeta",
         "update": "",
         "delete": "/Api/v5/BillsTable/del",
-        "read": "/Api/V5/BillsTable/ShowAll",
+        "read": "/Api/v2/BillsTable/ShowAll",
+        "groupBy": "/Api/v2/ItemsTable/groupBy",
         "read1": "/Api/V1/ItemsTable/ShowAll",
         "find": "",
         "filter": "",
@@ -94,7 +106,23 @@
             "isVisible": true,
             "cellConfig": {
                 "width": "150px"
-            }
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": true,
+            "verticalConfig": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1"
+            },
+            "isConsider": true
         },
         {
             "columnName": "InvoiceDate",
@@ -104,7 +132,23 @@
             "isVisible": true,
             "cellConfig": {
                 "width": "100px"
-            }
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": true,
+            "verticalConfig": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1"
+            },
+            "isConsider": true
         },
         {
             "columnName": "line",

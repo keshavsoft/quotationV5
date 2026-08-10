@@ -2,7 +2,6 @@ import { startFunc as createHandleSave } from "./CreateHandleSave/start.js";
 import createHandleOnChange from "./CreateHandleOnChange/V2/start.js";
 
 import { startFunc as createFooter } from "./CreateFooter/start.js";
-// import forSummary from "../../ForSummary/V8/CreateFooterRow/V4/start.js";
 
 import forSummary from "../../ForSummary/V9/CreateFooterRow/V4/start.js";
 
@@ -37,6 +36,7 @@ const buildFooter = ({ inVisibleColumnsConfig, inDefaultRow, keys,
     };
 
     const localHandleOnChange = ({ inCurrentTarget, inChangeType }) => {
+        // debugger;
         createHandleOnChange({
             inDataStore,
             inColumnsConfig: localVisibleColumns,

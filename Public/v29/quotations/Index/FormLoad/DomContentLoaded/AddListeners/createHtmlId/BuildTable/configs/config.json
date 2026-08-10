@@ -58,16 +58,17 @@
         }
     },
     "endPoints": {
-        "create": "/api/v5/BillsTable/insertWithMeta",
+        "lastRecord": "/api/v2/BillsTable/lastRecord",
+        "create": "/api/v2/BillsTable/insertWithMeta",
         "update": "/api/v6/BillsTable/modify",
         "delete": "/api/v5/BillsTable/del",
-        "read": "/api/V5/BillsTable/ShowAll",
+        "read": "/api/v2/BillsTable/ShowAll",
         "read1": "/api/V1/ItemsTable/ShowAll",
         "findFromParams1": "/api/v5/BillsTable/find/1",
         "filter": "",
         "dataLists": {},
         "dataListEndpoints": {
-            "LedgerNames": "/api/v7/LedgerNames/showAll"
+            "LedgerNames": "/api/v2/LedgerNames/showAll"
         }
     },
     "columnsConfig": [

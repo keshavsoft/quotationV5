@@ -28,6 +28,7 @@ const startFunc = async () => {
 
         if (config.callbacks.table.body.edit) {
             config.callbacks.table.body.edit = fromLibrary => {
+
                 editByPk(fromLibrary.item.pk);
             };
         };
