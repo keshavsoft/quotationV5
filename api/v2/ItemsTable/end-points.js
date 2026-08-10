@@ -8,6 +8,7 @@ import getInventoryArray from './getInventoryArray/controller.js';
 import getBatchTree from './getBatchTree/controller.js';
 import funcFromlastRecord from './lastRecord/controller.js';
 import findParentPk from './findParentPk/controller.js';
+import funcFromgroupBy from './groupBy/controller.js';
 
 import funcFrominsert from './insertWithMeta/controller.js';
 
@@ -25,6 +26,7 @@ router.get('/getInventoryArray', (req, res) => getInventoryArray({ req, res, inT
 router.get('/getBatchTree', (req, res) => getBatchTree({ req, res, inTablePath: tablePath }));
 router.get('/lastRecord', (req, res) => funcFromlastRecord({ req, res, inTablePath: tablePath }));
 router.get('/findParentPk/:pk', (req, res) => findParentPk({ req, res, inTablePath: tablePath }));
+router.get('/groupBy', (req, res) => funcFromgroupBy({ req, res, inTablePath: tablePath }));
 
 router.post('/insertWithMeta', express.json(), (req, res) => funcFrominsert({ req, res, inTablePath: tablePath, inConfigPath: configPath }));
 

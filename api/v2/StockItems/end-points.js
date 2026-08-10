@@ -10,9 +10,9 @@ import funcFromlastRecord from './lastRecord/controller.js';
 
 import funcFrominsert from './insertWithMeta/controller.js';
 
-const tableName = "BillsTable.json";
-const tablePath = "Data/BillsTable.json";
-const configPath = "Config/Schemas/BillsTable.json";
+const tableName = "StockItems.json";
+const tablePath = "Data/StockItems.json";
+const configPath = "Config/Schemas/StockItems.json";
 
 const router = express.Router();
 
