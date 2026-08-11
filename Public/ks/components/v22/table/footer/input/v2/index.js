@@ -5,7 +5,7 @@ class KsTableFooterInputCore extends classFromInputCore {
     connectedCallback() {
         super.connectedCallback();
 
-        console.log("localOptions:", this.localOptions);
+        // console.log("localOptions:", this.localOptions);
 
         attachEnterKeyEvent(this);
     }
