@@ -6,6 +6,7 @@ import findByVoucherNumberAndType from './findByVoucherNumberAndType/controller.
 import getInventoryColumn from './getInventoryColumn/controller.js';
 import getInventoryArray from './getInventoryArray/controller.js';
 import getBatchTree from './getBatchTree/controller.js';
+import getBatchArray from './getBatchArray/controller.js';
 
 import funcFrominsert from './insert/controller.js';
 
@@ -21,6 +22,7 @@ router.get('/findByVoucherNumberAndType/:vchtype/:vounum', (req, res) => findByV
 router.get('/getInventoryColumn', (req, res) => getInventoryColumn({ req, res, inTablePath: tablePath }));
 router.get('/getInventoryArray', (req, res) => getInventoryArray({ req, res, inTablePath: tablePath }));
 router.get('/getBatchTree', (req, res) => getBatchTree({ req, res, inTablePath: tablePath }));
+router.get('/getBatchArray', (req, res) => getBatchArray({ req, res, inTablePath: tablePath }));
 
 router.post('/insert', express.json(), (req, res) => funcFrominsert({ req, res, inTablePath: tablePath, inConfigPath: configPath }));
 
