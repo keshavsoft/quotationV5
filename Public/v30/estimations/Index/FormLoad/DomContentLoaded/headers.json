@@ -43,7 +43,7 @@
             "dropdownItems": [
                 {
                     "text": "Stock Items",
-                    "href": "../stockItems/index.html"
+                    "href": "../StockItems/index.html"
                 },
                 {
                     "text": "Ledger Names",
