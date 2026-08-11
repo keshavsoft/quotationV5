@@ -1,30 +1,24 @@
-import { getData, getHeadData } from "./getData.js";
-import { changeGridSummary } from "./changeGridSummary.js";
-import { addTimeSpan } from "./addTimeSpan.js";
+import configJson from "/Index/configs/billShow.json" with { type: "json" };
 
-export const clubData = async () => {
-    const headData = await getHeadData();
+// import ConfigJson from '../../../../../../configs/billShow.json' with {type: 'json'};
 
-    return headData.toReversed();
+// import ConfigJson from '../configs/billShow.json' with {type: 'json'};
+const startFunc = async () => {
+    console.log("configJson:", configJson);
+    console.log("read endpoint:", configJson?.endPoints?.read);
+
+    const config = await fetch(configJson?.endPoints?.read);
+
+    const data = await config.json();
+
+    return data;
 };
 
-export const clubDataFromGrid = async () => {
-    const headData = await getHeadData();
-    const gridSummary = await getData();
+const startFunc1 = async () => {
+    const config = await fetch(ConfigJson?.endPoints?.read);
+    const data = await config.json();
 
-    const clubbedData = gridSummary.map(loopItem => {
-        const foundHead = headData.find(loopHead => {
-            return loopHead.pk === loopItem.ParentPk;
-        });
-
-        return {
-            ...loopItem,
-            LedgerName: foundHead ? foundHead?.LedgerName : "",
-            InvoiceDate: foundHead ? foundHead?.InvoiceDate : ""
-        }
-    });
-
-    const withTimeSpan = addTimeSpan(clubbedData);
-
-    return withTimeSpan.toReversed();
+    return await data;
 };
+
+export default startFunc;

@@ -64,7 +64,7 @@
         "create": "/Api/v5/BillsTable/insertWithMeta",
         "update": "",
         "delete": "/Api/v5/BillsTable/del",
-        "read": "/Api/v2/StockItems/ShowAll",
+        "read": "/Api/v2/LedgerNames/ShowAll",
         "groupBy": "/Api/v2/ItemsTable/groupBy",
         "read1": "/Api/V1/ItemsTable/ShowAll",
         "find": "",
@@ -74,9 +74,9 @@
     },
     "columnsConfig": [
         {
-            "columnName": "stockitemname",
-            "title": "stockitemname",
-            "field": "stockitemname",
+            "columnName": "LedgerName",
+            "title": "LedgerName",
+            "field": "LedgerName",
             "cellConfig": {
                 "width": "150px",
                 "tdClass": "px-4 py-2 border"
@@ -99,9 +99,9 @@
             }
         },
         {
-            "columnName": "StockCategory",
-            "field": "StockCategory",
-            "title": "StockCategory",
+            "columnName": "LedgerParentName",
+            "field": "LedgerParentName",
+            "title": "LedgerParentName",
             "primary": true,
             "isVisible": true,
             "cellConfig": {
@@ -125,9 +125,9 @@
             "isConsider": true
         },
         {
-            "columnName": "StockItemType",
-            "field": "StockItemType",
-            "title": "StockItemType",
+            "columnName": "LedgerType",
+            "field": "LedgerType",
+            "title": "LedgerType",
             "primary": true,
             "isVisible": true,
             "cellConfig": {
@@ -151,11 +151,11 @@
             "isConsider": true
         },
         {
-            "columnName": "StockParentName",
-            "title": "StockParentName",
-            "field": "StockParentName",
+            "columnName": "GstRegistrationType",
+            "title": "GstRegistrationType",
+            "field": "GstRegistrationType",
             "cellConfig": {
-                "width": "50px",
+                "width": "150px",
                 "rightAlign": true,
                 "showThousandsSeperator": false,
                 "tableFooter": {
@@ -176,11 +176,11 @@
             }
         },
         {
-            "columnName": "StockBaseUnits",
-            "title": "StockBaseUnits",
-            "field": "StockBaseUnits",
+            "columnName": "PartyGSTIN",
+            "title": "PartyGSTIN",
+            "field": "PartyGSTIN",
             "cellConfig": {
-                "width": "50px",
+                "width": "150px",
                 "rightAlign": true,
                 "showThousandsSeperator": true,
                 "tableFooter": {
@@ -200,31 +200,6 @@
             "isSearch": false,
             "type": "date",
             "isConsider": true
-        },
-        {
-            "columnName": "Uom",
-            "title": "Uom",
-            "field": "Uom",
-            "cellConfig": {
-                "width": "50px",
-                "rightAlign": true,
-                "showThousandsSeperator": true,
-                "tableFooter": {
-                    "showTotal": true
-                }
-            },
-            "uiClasses": {
-                "form": {
-                    "rowClass": "flex items-center space-x-4 w-1/2"
-                }
-            },
-            "isConsider": true,
-            "tableConfig": {
-                "footerConfig": {
-                    "enterAsTab": false,
-                    "isNotEmpty": false
-                }
-            }
         }
     ],
     "defaults": {

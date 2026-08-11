@@ -1,7 +1,6 @@
-import { getKSTableConfig } from "./getKSTableConfig.js";
-import showByPk from "./showByPk/index.js";
-import editByPk from "./editByPk/index.js";
-import { clubData } from "./helpers/clubData.js";
+import configJson from "../../../../../configs/billShow.json" with { type: "json" };
+
+// import clubData from "./helpers/clubData.js";
 
 const jFLocalToInputkSTableContainer = (inValue) => {
     const jVarLocalHtmlId = 'kSTableContainer';
@@ -15,22 +14,19 @@ const jFLocalToInputkSTableContainer = (inValue) => {
 const startFunc = async () => {
     jFLocalToInputkSTableContainer("");
 
-    const config = await getKSTableConfig();
+    const config = structuredClone(configJson);
 
-    config.defaults.data = await clubData();
+    const fromFetch = await fetch(config?.endPoints?.read);
+
+    config.defaults.data = await fromFetch.json();
 
     if (config.callbacks) {
         if (config.callbacks.table.body.show) {
-            config.callbacks.table.body.show = fromLibrary => {
-                showByPk(fromLibrary.item.pk);
-            };
+            config.callbacks.table.body.show = {};
         };
 
         if (config.callbacks.table.body.edit) {
-            config.callbacks.table.body.edit = fromLibrary => {
-
-                editByPk(fromLibrary.item.pk);
-            };
+            config.callbacks.table.body.edit = {};
         };
     }
 
