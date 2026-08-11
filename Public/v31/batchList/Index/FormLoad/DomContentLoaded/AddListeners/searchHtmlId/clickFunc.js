@@ -18,8 +18,32 @@ const clickFuncToRun = async ({ inCurrentTarget }) => {
     config.options.firstRow.allColumns = true;
 
     const fromFetch = await fetch(config?.endPoints?.read);
+    const fromFetchAsJson = await fromFetch.json();
 
-    config.defaults.data = await fromFetch.json();
+    const sortedMembers2 = fromFetchAsJson.toSorted((a, b) => a.stockitemname.localeCompare(b.stockitemname));
+
+    const sortedMembers1 = fromFetchAsJson.toSorted((a, b) => {
+        a.stockitemname.localeCompare(b.stockitemname) || a.batchname.localeCompare(b.batchname)
+    });
+    // debugger
+
+    const sortedMembers = fromFetchAsJson.toSorted((a, b) => {
+        // Normalize missing values to empty strings safely
+        const itemA = a.stockitemname ? String(a.stockitemname).trim() : "";
+        const itemB = b.stockitemname ? String(b.stockitemname).trim() : "";
+
+        const batchA = a.batchname ? String(a.batchname).trim() : "";
+        const batchB = b.batchname ? String(b.batchname).trim() : "";
+
+        // Sort with options: 'numeric: true' treats '0.75' correctly, 'sensitivity: base' ignores case distinctions
+        return itemA.localeCompare(itemB, undefined, { sensitivity: 'base', numeric: true }) ||
+            batchA.localeCompare(batchB, undefined, { sensitivity: 'base', numeric: true });
+    });
+
+
+    // users.sort((a, b) => a.name.localeCompare(b.name));
+
+    config.defaults.data = sortedMembers;
 
     if (config.callbacks) {
         if (config.callbacks.table.body.show) {
