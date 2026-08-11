@@ -1,0 +1,258 @@
+{
+    "containerId": "kSTableContainer",
+    "tableName": "Estimations",
+    "mode": "create",
+    "layout": {
+        "verticalPosition": "top",
+        "type": "table"
+    },
+    "options": {
+        "firstRow": {
+            "showSearch": true,
+            "allColumns": false,
+            "columnWiseSearch": true
+        },
+        "enabledSections": [
+            "vertical",
+            "table",
+            "footer"
+        ],
+        "table": {
+            "showFooterRows": true,
+            "showDataList": true,
+            "showSave": true,
+            "showActions": true,
+            "showSerial": true,
+            "showFooter": true,
+            "footer": {
+                "showAggregateRows": true,
+                "showTotals": true
+            },
+            "body": {
+                "showEdit": true,
+                "showDelete": false,
+                "showShow": true,
+                "deleteType": "icon",
+                "deleteIconSize": "xl"
+            }
+        },
+        "vertical": {
+            "isCreate": true,
+            "isEdit": false,
+            "layoutType": "inputsInline",
+            "layoutType2": "singleLine",
+            "layoutType3": "labelAbove",
+            "layoutType4": "labelAbove",
+            "showButtons": false
+        }
+    },
+    "callbacks": {
+        "table": {
+            "onDelete1": "function",
+            "onReadFail": "function",
+            "body": {
+                "update": "function",
+                "show": "function",
+                "edit": "function"
+            },
+            "footer": {
+                "onSave": "function"
+            }
+        }
+    },
+    "endPoints": {
+        "create": "/Api/v5/BillsTable/insertWithMeta",
+        "update": "",
+        "delete": "/Api/v5/BillsTable/del",
+        "read": "/Api/v2/BillsTable/ShowAll",
+        "groupBy": "/Api/v2/ItemsTable/groupBy",
+        "read1": "/Api/V1/ItemsTable/ShowAll",
+        "find": "",
+        "filter": "",
+        "dataLists": {},
+        "dataListEndpoints": {}
+    },
+    "columnsConfig": [
+        {
+            "columnName": "ParentPk",
+            "title": "pk",
+            "field": "ParentPk",
+            "cellConfig": {
+                "width": "50px",
+                "tdClass": "px-4 py-2 border"
+            },
+            "dataListSource": "LedgerName.LedgerName",
+            "tableFooterDataListShow": true,
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4"
+                }
+            },
+            "allowOnChange": true,
+            "onChangeType": "onDataListChange",
+            "isConsider": true,
+            "tableConfig": {
+                "footerConfig": {
+                    "enterAsTab": true,
+                    "isNotEmpty": true
+                }
+            }
+        },
+        {
+            "columnName": "LedgerName",
+            "field": "LedgerName",
+            "title": "LedgerName",
+            "primary": true,
+            "isVisible": true,
+            "cellConfig": {
+                "width": "150px"
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": true,
+            "verticalConfig": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1"
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "InvoiceDate",
+            "field": "InvoiceDate",
+            "title": "InvoiceDate",
+            "primary": true,
+            "isVisible": true,
+            "cellConfig": {
+                "width": "100px"
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": true,
+            "verticalConfig": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1"
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "line",
+            "title": "lines",
+            "field": "lines",
+            "cellConfig": {
+                "width": "50px",
+                "rightAlign": true,
+                "showThousandsSeperator": false,
+                "tableFooter": {
+                    "showTotal": false
+                }
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2"
+                }
+            },
+            "isConsider": true,
+            "tableConfig": {
+                "footerConfig": {
+                    "enterAsTab": false,
+                    "isNotEmpty": false
+                }
+            }
+        },
+        {
+            "columnName": "Qty",
+            "title": "Qty",
+            "field": "Qty",
+            "cellConfig": {
+                "width": "100px",
+                "rightAlign": true,
+                "showThousandsSeperator": true,
+                "tableFooter": {
+                    "showTotal": true
+                }
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isDate": true,
+            "defaultToday": true,
+            "isReadonly": false,
+            "autoFocus": false,
+            "isSearch": false,
+            "type": "date",
+            "isConsider": true
+        },
+        {
+            "columnName": "Amount",
+            "title": "Amount",
+            "field": "Amount",
+            "cellConfig": {
+                "width": "150px",
+                "rightAlign": true,
+                "showThousandsSeperator": true,
+                "tableFooter": {
+                    "showTotal": true
+                }
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2"
+                }
+            },
+            "isConsider": true,
+            "tableConfig": {
+                "footerConfig": {
+                    "enterAsTab": false,
+                    "isNotEmpty": false
+                }
+            }
+        },
+        {
+            "columnName": "DateTimeDiff",
+            "title": "TimeSpan",
+            "field": "DateTimeDiff",
+            "cellConfig": {
+                "width": "100px",
+                "rightAlign": false,
+                "showThousandsSeperator": false,
+                "tableFooter": {
+                    "showTotal": false
+                }
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2"
+                }
+            },
+            "isConsider": true,
+            "tableConfig": {
+                "footerConfig": {
+                    "enterAsTab": false,
+                    "isNotEmpty": false
+                }
+            }
+        }
+    ],
+    "defaults": {
+        "data": []
+    }
+}

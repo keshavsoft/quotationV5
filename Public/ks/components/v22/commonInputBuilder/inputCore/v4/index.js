@@ -67,6 +67,10 @@ if (!customElements.get("ks-table-footer-input-core")) {
     customElements.define("ks-table-footer-input-core", KsTableFooterInputCore);
 };
 
+window.ks = window.ks || {};
+window.ks.components = window.ks.components || {};
+window.ks.components.inputs = KsTableFooterInputCore;
+
 export { defaultOptions };
 export default KsTableFooterInputCore;
 

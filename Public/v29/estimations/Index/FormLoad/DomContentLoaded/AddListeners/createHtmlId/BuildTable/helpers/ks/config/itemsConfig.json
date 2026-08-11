@@ -322,12 +322,37 @@
             "tableConfig": {
                 "footerConfig": {
                     "enterAsTab": true,
-                    "isNotEmpty": true
+                    "isNotEmpty": true,
+                    "onKeyDownType": "dataListDynamic",
+                    "evalToControl": "Batch",
+                    "allowOnChange": true
                 }
             },
             "isVisible": true,
             "tableFooterDataListShow": true,
-            "dataListSource": "StockItems.StockItemName",
+            "dataListSource": "StockItems.stockitemname",
+            "allowOnChange": true,
+            "onChangeType": "onDataListChange"
+        },
+        {
+            "columnName": "Batch",
+            "title": "Batch",
+            "field": "Batch",
+            "cellConfig": {
+                "width": "200px"
+            },
+            "isConsider": true,
+            "verticalConfig": {},
+            "tableConfig": {
+                "footerConfig": {
+                    "enterAsTab": true,
+                    "isNotEmpty": true,
+                    "onKeyDownType": "Batch"
+                }
+            },
+            "isVisible": true,
+            "tableFooterDataListShow": false,
+            "dataListSource": "Batches.batchname",
             "allowOnChange": true,
             "onChangeType": "onDataListChange"
         },
