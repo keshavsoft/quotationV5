@@ -189,9 +189,9 @@
       ],
       "columnsConfig": [
         {
-          "columnName": "StockItemName",
-          "title": "StockItemName",
-          "field": "StockItemName",
+          "columnName": "stockitemname",
+          "title": "stockitemname",
+          "field": "stockitemname",
           "cellConfig": {
             "width": "150px"
           },
