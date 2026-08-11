@@ -15,17 +15,10 @@ const clickFuncToRun = async ({ inCurrentTarget }) => {
     const config = structuredClone(configJson);
 
     config.options.firstRow.showSearch = true;
-    config.options.firstRow.allColumns = true;
+    config.options.firstRow.columnWiseSearch = true;
 
     const fromFetch = await fetch(config?.endPoints?.read);
     const fromFetchAsJson = await fromFetch.json();
-
-    const sortedMembers2 = fromFetchAsJson.toSorted((a, b) => a.stockitemname.localeCompare(b.stockitemname));
-
-    const sortedMembers1 = fromFetchAsJson.toSorted((a, b) => {
-        a.stockitemname.localeCompare(b.stockitemname) || a.batchname.localeCompare(b.batchname)
-    });
-    // debugger
 
     const sortedMembers = fromFetchAsJson.toSorted((a, b) => {
         // Normalize missing values to empty strings safely
@@ -39,9 +32,6 @@ const clickFuncToRun = async ({ inCurrentTarget }) => {
         return itemA.localeCompare(itemB, undefined, { sensitivity: 'base', numeric: true }) ||
             batchA.localeCompare(batchB, undefined, { sensitivity: 'base', numeric: true });
     });
-
-
-    // users.sort((a, b) => a.name.localeCompare(b.name));
 
     config.defaults.data = sortedMembers;
 

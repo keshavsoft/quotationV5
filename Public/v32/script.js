@@ -87,7 +87,7 @@ const ensureTailwind = () => loadResource({
 const ensureKSComponents = () => loadResource({
     name: "KSComponents",
     sources: [
-        { type: "js", url: "/ks/components/v22/index.js", label: "Local" },
+        { type: "js", url: "/ks/components/v23/index.js", label: "Local" },
         { type: "js", url: "https://keshavsoft.github.io/ks-web-comp-table/dist/v3.22/KSComponents.js", label: "git" }
     ]
 });
@@ -123,7 +123,7 @@ const ensureKSTableOnly = () => loadResource({
     name: "KSTableOnly",
     isLoaded: () => !!window.KSTableComp,
     sources: [
-        { type: "js", url: "/ks/tableOnly/v6/ai.js", label: "Local" },
+        { type: "js", url: "/ks/tableOnly/v7/ai.js", label: "Local" },
         { type: "js", url: "https://keshavsoft.github.io/tailwind-table-dom-comp-show/dist/v6/kstableonly.js", label: "git" }
     ]
 });

@@ -1,6 +1,6 @@
 {
     "containerId": "kSTableContainer",
-    "tableName": "Estimations",
+    "tableName": "Estimations---------",
     "mode": "create",
     "layout": {
         "verticalPosition": "top",
@@ -43,7 +43,8 @@
             "layoutType2": "singleLine",
             "layoutType3": "labelAbove",
             "layoutType4": "labelAbove",
-            "showButtons": false
+            "showButtons": false,
+            "enterAsTab": false
         }
     },
     "callbacks": {
@@ -198,7 +199,15 @@
                 "onKeyDown": false,
                 "onKeyDownType": "onDataListChange",
                 "type": "",
-                "tabIndex": "-1"
+                "tabIndex": "-1",
+                "showButton": {
+                    "textToShow": "filter",
+                    "className": "flex-1 px-4 py-1 bg-green-500 text-white rounded"
+                },
+                "showCheckBox": {
+                    "textToShow": "consider",
+                    "className": ""
+                }
             },
             "isConsider": true
         }

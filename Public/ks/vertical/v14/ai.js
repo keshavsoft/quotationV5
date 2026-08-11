@@ -6,7 +6,6 @@ window.KSAiVertical.defaults = KSAiVertical.defaults;
 window.ks = window.ks || {};
 window.ks.classes = window.ks.classes || {};
 window.ks.classes.vertical = KSAiVertical;
-window.ks.classes.verticalVersion = "v13";
-// console.log("aaaaaaaaaaaaa---------------- ");
+window.ks.classes.verticalVersion = "v14";
 
 export default KSAiVertical;
