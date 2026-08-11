@@ -1,4 +1,4 @@
-POST http://localhost:9011/api/v5/BillsTable/insertGenPk
+POST http://localhost:3025/api/v5/BillsTable/insertGenPk
 Content-Type: application/json
 
 {

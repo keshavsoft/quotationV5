@@ -1,1 +1,1 @@
-GET http://localhost:9011/api/v1/ItemsTable/findParentPk/1
+GET http://localhost:3025/api/v1/ItemsTable/findParentPk/1
