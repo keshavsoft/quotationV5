@@ -71,6 +71,25 @@ const getFilteredBatches = ({ currentInputValue, currentControlColumnName,
     return { filterBatches };
 };
 
+const insertDataListToDom = ({ evalToControlName, inClosestControl, filterBatches, closestTd }) => {
+    const dataListId = `${evalToControlName}DataList`;
+
+    const existingDataList = inClosestControl.querySelector(`#${dataListId}`);
+
+    if (existingDataList) {
+        existingDataList.remove();
+    };
+
+    const dataList = createDataList({
+        id: dataListId,
+        values: filterBatches
+    });
+
+    closestTd.appendChild(dataList);
+
+    return dataListId;
+};
+
 const executeKeyDownType = ({ currentInput, inClosestControl, inOptions }) => {
     const currentInputValue = currentInput.value;
     // debugger
@@ -80,25 +99,18 @@ const executeKeyDownType = ({ currentInput, inClosestControl, inOptions }) => {
         toControlDataListSourceColumnName, evaltocontrol } = getToControlAttr({
             evalToControlName, inClosestControl
         });
-    debugger
+    // debugger
     const { filterBatches } = getFilteredBatches({
         currentInputValue, currentControlColumnName,
         toControlDataListSourceTableName, toControlDataListSourceColumnName,
         inGetDataList: inOptions?.inDataStore?.getDataList
     });
-    const dataListId = `${evalToControlName}DataList`;
 
-    const dataList = createDataList({
-        id: dataListId,
-        values: filterBatches
+    const dataListId = insertDataListToDom({
+        evalToControlName, inClosestControl, filterBatches, closestTd
     });
 
-    closestTd.appendChild(dataList);
-
     evaltocontrol.setAttribute("list", dataListId);
-
-    // const controlAttr = 
-
 };
 
 const executeKeyDownType1 = ({ currentInput, inClosestControl, inOptions }) => {
