@@ -22,12 +22,6 @@ const startFunc = async ({
         // debugger
         const dataToShow = inDataStore.getData();
 
-        // buildBody({
-        //     inData: dataToShow, inDataStore,
-        //     inTableBody, inEndPoints,
-        //     inVisibleColumnsConfig, inServices
-        // });
-
         buildBody({
             inVisibleColumnsConfig,
             inTableBody,
@@ -49,11 +43,6 @@ const startFunc = async ({
                 inShowTotals: true
             })
         };
-        // updateFooter({
-        //     inTableFooter, inShowFooterRows: true,
-        //     inShowTotals: true, inData: dataToShow,
-        //     inVisibleColumnsConfig,
-        // });
 
         clearValues({ inTableFooter });
     } catch (err) {

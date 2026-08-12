@@ -3,8 +3,9 @@ import { createSaveButton } from "./createSaveButton.js";
 import { createEditButton } from "./createEditButton.js";
 import { createCancelButton } from "./createCancelButton.js";
 import { createUpdateButton } from "./createUpdateButton.js";
+import appendToDom from "./appendToDom.js";
 
-const appendToDom = ({ inButtonRow, options, inServices, inConfig, element }) => {
+const appendToDom1 = ({ inButtonRow, options, inServices, inConfig, element }) => {
     const isEdit = options?.inVerticalOptions?.isEdit || false;
     const isCreate = options?.inVerticalOptions?.isCreate || false;
     const isModeDefined = options?.inVerticalOptions ? (("isEdit" in options.inVerticalOptions) || ("isCreate" in options.inVerticalOptions)) : false;
@@ -63,8 +64,6 @@ export const appendButtons = ({ form, element, options = {}, inServices, inConfi
     if (window.ksShowLogTree.htmlForm) console.log("window.ksShowLogTree.htmlForm - appendButtons options : ", options);
 
     const showSaveButton = options.showSaveButton || false;
-    const isEdit = options?.inVerticalOptions?.isEdit || false;
-    const isCreate = options?.inVerticalOptions?.isCreate || false;
     const isModeDefined = options?.inVerticalOptions ? (("isEdit" in options.inVerticalOptions) || ("isCreate" in options.inVerticalOptions)) : false;
 
     if (!isModeDefined && !showSaveButton) return;

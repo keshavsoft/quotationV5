@@ -1,4 +1,3 @@
-import defaultOptions from "../defaultOptions.js";
 import { createSaveButton } from "./createSaveButton.js";
 import { createEditButton } from "./createEditButton.js";
 import { createCancelButton } from "./createCancelButton.js";
@@ -47,15 +46,6 @@ const startFunc = ({ inButtonRow, options, inServices, inConfig, element }) => {
     }
 
     inButtonRow.append(saveBtn, editBtn, updateBtn, cancelBtn);
-};
-
-const createButtonRow = ({ options } = {}) => {
-    const buttonRow = document.createElement("div");
-
-    buttonRow.className = options?.uiClasses?.buttonRowClass || options?.uiClasses?.buttonRow?.class || options?.uiClasses?.form?.buttonRow?.class || defaultOptions.uiClasses.form.buttonRow.class;
-    buttonRow.classList.add("buttonsRow");
-
-    return buttonRow;
 };
 
 export default startFunc;

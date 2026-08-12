@@ -7,7 +7,6 @@ import { loadDataFlow } from "./loadDataFlow.js";
 import { setupServices } from "../Services/setupServices.js";
 import mountCreate from "../UI/mountCreate.js";
 import { configureDataStore } from "./configureDataStore.js";
-import { mergeUIClasses } from "./mergeUIClasses.js";
 
 class KSAiVertical {
     static defaults = {

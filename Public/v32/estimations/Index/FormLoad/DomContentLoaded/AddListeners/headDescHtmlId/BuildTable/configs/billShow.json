@@ -43,7 +43,7 @@
             "layoutType2": "singleLine",
             "layoutType3": "labelAbove",
             "layoutType4": "labelAbove",
-            "showButtons": false
+            "showButtons": true
         }
     },
     "callbacks": {

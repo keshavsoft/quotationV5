@@ -1,10 +1,5 @@
-// createForm.js
-
 const createForm = (options) => {
     const optionsEnterAsTab = options?.inConfig?.options?.vertical?.enterAsTab;
-    // console.log("ssssssss------------ : ", options);
-
-    // console.log("ssssssss------------ : ", options, options?.inConfig?.options?.vertical?.enterAsTab);
 
     if (optionsEnterAsTab === false) {
         const form1 = document.createElement("ks-html-form-no-enter");

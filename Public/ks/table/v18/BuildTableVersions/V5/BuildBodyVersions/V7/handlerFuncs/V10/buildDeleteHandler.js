@@ -19,7 +19,7 @@ const buildDeleteHandler = ({
             inDataStore,
             inServices,
             inEndPoints,
-            inTableBody,
+            inTableBody, inIsUpdateFooter: true,
             inVisibleColumnsConfig,
             inShowSerial, inTableFooter
         });
@@ -27,7 +27,7 @@ const buildDeleteHandler = ({
 
     const localDeleteHandler = async ({ presentPk }) => {
         const userConfirm = confirm(`Are you sure to delete row ${presentPk} ?`);
-
+        // debugger
         if (userConfirm === false) return;
 
         const fromDelete = await deleteFromServer({ presentPk, inEndPoints, inServices });

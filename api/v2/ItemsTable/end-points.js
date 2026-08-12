@@ -14,6 +14,8 @@ import funcFrominsert from './insertWithMeta/controller.js';
 
 import funcFrommodify from './modify/controller.js';
 
+import funcFromdel from './del/controller.js';
+
 const tableName = "ItemsTable.json";
 const tablePath = "Data/ItemsTable.json";
 const configPath = "Config/Schemas/ItemsTable.json";
@@ -33,5 +35,7 @@ router.get('/groupBy', (req, res) => funcFromgroupBy({ req, res, inTablePath: ta
 router.post('/insertWithMeta', express.json(), (req, res) => funcFrominsert({ req, res, inTablePath: tablePath, inConfigPath: configPath }));
 
 router.put('/modify', express.json(), (req, res) => funcFrommodify({ req, res, inTablePath: tablePath, inConfigPath: configPath }));
+
+router.delete('/del/:pk', (req, res) => funcFromdel({ req, res, inTablePath: tablePath }));
 
 export { router };

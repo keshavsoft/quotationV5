@@ -14,7 +14,6 @@ const localIsFormDisabled = ({ isModeDefined, isEdit, isCreate, inIsDisabled }) 
 
 const renderForm = ({ element, options }) => {
     const {
-        showSaveButton = false,
         inDefaultRow = {},
         uiClasses = {},
         inIsDisabled,

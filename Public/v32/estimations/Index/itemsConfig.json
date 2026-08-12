@@ -46,7 +46,7 @@
     "endPoints": {
         "create": "/Api/v2/ItemsTable/insertWithMeta",
         "update": "/api/v2/ItemsTable/modify",
-        "delete": "/api/v6/ItemsTable/del",
+        "delete": "/api/v2/ItemsTable/del",
         "read": "/Api/V2/ItemsTable/findParentPk/<ParentPk>",
         "find": "",
         "filter": "",
