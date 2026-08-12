@@ -1,10 +1,11 @@
 import checkFooterInputsNonEmpty from "../validation/checkFooterInputsNonEmpty.js";
 import extractInputFromCell from "./extractInputFromCell.js";
+import collectFieldsFromCells from "./collectFieldsFromCells.js";
 
 /**
  * Helper to query and extract all input names and values from the closest footer element.
  */
-const extractFooterData = (currentTarget) => {
+const extractFooterData1 = (currentTarget) => {
     const closestFooter = currentTarget.closest("tfoot");
     if (!closestFooter) return {};
 
@@ -21,19 +22,21 @@ const extractFooterData = (currentTarget) => {
     return data;
 };
 
-/**
- * Helper to query and extract all input names and values from the closest footer element.
- */
-const extractFooterData1 = (currentTarget) => {
+const extractFooterData = (currentTarget) => {
     const closestFooter = currentTarget.closest("tfoot");
     if (!closestFooter) return {};
 
-    const inputs = closestFooter.querySelectorAll("input");
+    const tds = closestFooter.querySelectorAll("td");
     const data = {};
 
-    inputs.forEach((input) => {
-        data[input.name] = input.value;
-    });
+    collectFieldsFromCells({ tds, updatedItem: data });
+
+    // tds.forEach((td) => {
+    //     const extractedData = extractInputFromCell(td);
+    //     if (extractedData) {
+    //         data[extractedData.name] = extractedData.value;
+    //     };
+    // });
 
     return data;
 };
