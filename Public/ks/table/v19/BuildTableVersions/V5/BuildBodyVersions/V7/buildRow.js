@@ -50,7 +50,7 @@ const appendDataCells = ({ tr, item, columns, searchValue }) => {
             inEvalformula: loopColumn?.tableConfig?.footerConfig?.evalformula,
             inEvalToControl: loopColumn?.tableConfig?.footerConfig?.evalToControl,
             inIsNotEmpty: loopColumn?.tableConfig?.footerConfig?.isNotEmpty,
-            inClassName: loopColumn?.tableConfig?.bodyConfig?.className
+            inClassName: loopColumn?.cellConfig?.uiClasses?.table?.tbody?.tdClass
         }));
     };
 };

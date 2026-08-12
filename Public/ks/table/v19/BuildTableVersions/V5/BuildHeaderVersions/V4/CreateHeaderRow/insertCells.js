@@ -16,7 +16,8 @@ const startFunc = ({
         tr.appendChild(
             createHeaderCell({
                 inKey: value.columnName,
-                inClassName: value.tableConfig?.headerConfig?.className || inClassName,
+                inClassName: value?.cellConfig?.uiClasses?.table?.thead?.tdClass || inClassName,
+                inClassName1: value.tableConfig?.headerConfig?.className || inClassName,
                 inWidth: width,
                 inTitle: value.title,
             })

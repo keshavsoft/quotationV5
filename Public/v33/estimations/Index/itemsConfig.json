@@ -89,6 +89,12 @@
                 "width": "200px",
                 "uiClasses": {
                     "table": {
+                        "thead": {
+                            "tdClass": "print-hide"
+                        },
+                        "tbody": {
+                            "tdClass": "print-hide"
+                        },
                         "tfoot": {
                             "tdClass": "print-hide"
                         }
@@ -98,19 +104,18 @@
             "isConsider": true,
             "verticalConfig": {},
             "tableConfig": {
-                "headerConfig": {
+                "headerConfig1": {
                     "hideOnPrint": true,
                     "className": "print-hide"
                 },
-                "bodyConfig": {
+                "bodyConfig1": {
                     "hideOnPrint": true,
                     "className": "print-hide"
                 },
                 "footerConfig": {
                     "enterAsTab": true,
                     "isNotEmpty": true,
-                    "onKeyDownType": "Batch",
-                    "className": "print-hide"
+                    "onKeyDownType": "Batch"
                 }
             },
             "isVisible": true,
