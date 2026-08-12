@@ -1,0 +1,63 @@
+import buildBody from "../../BuildBodyVersions/V7/start.js";
+
+import setFocus from "../../../../SetFocus/V4/index.js";
+
+import updateFooter from "./UpdateFooter/V2/start.js";
+
+const startFunc = async ({
+    inDataStore,
+    inServices,
+    inEndPoints,
+    inTableBody, inConfig,
+    inVisibleColumnsConfig, inTableFooter,
+    inIsUpdateFooter
+}) => {
+    try {
+        // debugger;
+        const dataFromFetch = await inServices.actions.getData({
+            inEndPoint: inEndPoints.read
+        });
+
+        inDataStore.setData(dataFromFetch);
+        // debugger
+        const dataToShow = inDataStore.getData();
+
+        buildBody({
+            inVisibleColumnsConfig,
+            inTableBody,
+            inData: dataToShow,
+            inServices,
+            inEndPoints,
+            inDataStore,
+            inConfig,
+            inTableFooter
+        });
+
+        setFocus({ inContainerEl: inTableFooter });
+
+        if (inIsUpdateFooter) {
+            updateFooter({
+                inTableFooter,
+                inData: dataToShow,
+                inShowFooterRows: true,
+                inShowTotals: true
+            })
+        };
+
+        clearValues({ inTableFooter });
+    } catch (err) {
+        console.error(err);
+        return;
+    };
+};
+
+const clearValues = ({ inTableFooter }) => {
+    const footerInputs = inTableFooter.querySelectorAll("input");
+
+    for (const th of footerInputs) {
+        th.value = "";
+    };
+
+};
+
+export default startFunc;
