@@ -1,7 +1,14 @@
-PUT http://localhost:9011/api/v5/ItemsTable/modify
+PUT http://localhost:3025/api/v2/ItemsTable/modify
 Content-Type: application/json
 
 {
-    "pk":1,
-  "ItemName": "item1"
+    "ParentPk": 273,
+    "ItemName": "Viaadi Hooks",
+    "Batch": "1/0-Rs.14973/-",
+    "Qty": "20",
+    "RateInc": "30.00",
+    "Amount": "66677.00",
+    "DateTime": "2026-08-12T07:01:01.068Z",
+    "Uuid": "3175753f-07ac-4d4c-a40a-67f45def42f6",
+    "pk": 851
 }
