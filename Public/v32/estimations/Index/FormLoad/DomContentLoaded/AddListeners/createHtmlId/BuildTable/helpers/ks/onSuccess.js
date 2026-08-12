@@ -1,8 +1,10 @@
+import rawItemsConfig from "../../../../../../../itemsConfig.json" with { type: "json"};
+
 import { modifyItemsConfig } from "../pure/modifyItemsConfig.js";
 import { initTable } from "./table.js";
 import { writeHtmlId } from "../dom/writeHtmlId.js";
 
-import rawItemsConfig from "./config/itemsConfig.json" with { type: "json"};
+// import rawItemsConfig from "./config/itemsConfig.json" with { type: "json"};
 
 const onSuccess = async (fromService) => {
     if (fromService) {
