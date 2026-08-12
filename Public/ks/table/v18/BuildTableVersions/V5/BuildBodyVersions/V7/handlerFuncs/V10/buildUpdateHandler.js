@@ -12,7 +12,7 @@ const buildUpdateHandler = ({
     inUpdateEndPoint, inClientUpdate
 }) => {
     const localDeleteHandler = async ({ item, index, presentPk, updatedItem }) => {
-        debugger;
+        // debugger;
         const fromService = await inUpdateService({ inEndPoint: inUpdateEndPoint, payload: updatedItem })
         // console.log("fromService : ", fromService);
 

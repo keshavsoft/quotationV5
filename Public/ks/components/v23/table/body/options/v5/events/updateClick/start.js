@@ -1,4 +1,4 @@
-import extractRowData from "./extractRowData.js";
+import extractRowData from "./extractRowData/index.js";
 import revertRowToStaticText from "./revertRowToStaticText.js";
 import toggleButtons from "./toggleButtons.js";
 

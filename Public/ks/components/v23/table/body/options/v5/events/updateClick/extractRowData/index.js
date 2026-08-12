@@ -1,3 +1,4 @@
+import extractInputFromCell from "./extractInputFromCell.js";
 /**
  * Story: When the user clicks "Update", the row is still in edit mode —
  * every data cell contains a live <input> element with the user's new value.
@@ -15,21 +16,6 @@
  * @param {HTMLTableRowElement} closestTr - The table row currently being saved.
  * @returns {Object} Flat key-value map of the edited row data, including pk.
  */
-
-/**
- * Reads a single cell and, if it contains a named input, returns { name, value }.
- * Returns null when there is nothing useful to extract (no input / no name).
- *
- * @param {HTMLTableCellElement} td - A data cell from the row.
- * @returns {{ name: string, value: string } | null}
- */
-const extractInputFromCell = (td) => {
-    const input = td.querySelector("input");
-    if (input && input.name) {
-        return { name: input.name, value: input.value };
-    }
-    return null;
-};
 
 /**
  * Walks every data cell in the row (skipping the last options cell),
