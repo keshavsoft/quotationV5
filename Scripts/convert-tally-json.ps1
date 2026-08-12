@@ -10,18 +10,18 @@
 #
 # Usage:
 #   .\convert-tally-json.ps1
-#   .\convert-tally-json.ps1 -InputFile "myexport.json"
-#   .\convert-tally-json.ps1 -InputFile "myexport.json" -KeepUtf8
+#   .\convert-tally-json.ps1 -InputFile "out.json"
+#   .\convert-tally-json.ps1 -InputFile "out.json" -KeepUtf8
 # =============================================================================
 
 param (
-    [string]$InputFile = "purchases.json",   # file exported from Tally (UTF-16 LE)
+    [string]$InputFile = "Transactions.json",   # file exported from Tally (UTF-16 LE)
     [switch]$KeepUtf8                         # keep the intermediate UTF-8 file
 )
 
 $ErrorActionPreference = "Stop"
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$DataDir   = Join-Path $ScriptDir "..\Data"
+$DataDir   = Join-Path $ScriptDir ""
 
 $InputPath  = Join-Path $DataDir $InputFile
 $Utf8Path   = Join-Path $DataDir ($InputFile -replace '\.json$', '_utf8.json')
