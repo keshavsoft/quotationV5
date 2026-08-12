@@ -1,0 +1,208 @@
+{
+    "containerId": "kSTableContainer",
+    "tableName": "Estimations",
+    "mode": "create",
+    "layout": {
+        "verticalPosition": "top",
+        "type": "table"
+    },
+    "options": {
+        "firstRow": {
+            "showSearch": false,
+            "allColumns": false,
+            "columnWiseSearch": false
+        },
+        "enabledSections": [
+            "vertical",
+            "table",
+            "footer"
+        ],
+        "table": {
+            "showFooterRows": false,
+            "showDataList": false,
+            "showSave": false,
+            "showActions": false,
+            "showSerial": true,
+            "showFooter": false,
+            "footer": {
+                "showAggregateRows": true,
+                "showTotals": true
+            },
+            "body": {
+                "showEdit": false,
+                "showDelete": false,
+                "showShow": false,
+                "deleteType": "icon",
+                "deleteIconSize": "xl"
+            }
+        },
+        "vertical": {
+            "isCreate": true,
+            "isEdit": false,
+            "layoutType": "inputsInline",
+            "layoutType2": "singleLine",
+            "layoutType3": "labelAbove",
+            "layoutType4": "labelAbove",
+            "showButtons": false
+        }
+    },
+    "callbacks": {
+        "table": {
+            "onDelete1": "function",
+            "onReadFail": "function",
+            "body": {
+                "update": "function",
+                "show": "function",
+                "edit": "function"
+            },
+            "footer": {
+                "onSave": "function"
+            }
+        }
+    },
+    "endPoints": {
+        "create": "/Api/v5/BillsTable/insertWithMeta",
+        "update": "",
+        "delete": "/Api/v5/BillsTable/del",
+        "read": "/Api/v2/LedgerNames/ShowAll",
+        "groupBy": "/Api/v2/ItemsTable/groupBy",
+        "read1": "/Api/V1/ItemsTable/ShowAll",
+        "find": "",
+        "filter": "",
+        "dataLists": {},
+        "dataListEndpoints": {}
+    },
+    "columnsConfig": [
+        {
+            "columnName": "LedgerName",
+            "title": "LedgerName",
+            "field": "LedgerName",
+            "cellConfig": {
+                "width": "150px",
+                "tdClass": "px-4 py-2 border"
+            },
+            "dataListSource": "",
+            "tableFooterDataListShow": true,
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4"
+                }
+            },
+            "allowOnChange": true,
+            "onChangeType": "onDataListChange",
+            "isConsider": true,
+            "tableConfig": {
+                "footerConfig": {
+                    "enterAsTab": true,
+                    "isNotEmpty": true
+                }
+            }
+        },
+        {
+            "columnName": "LedgerParentName",
+            "field": "LedgerParentName",
+            "title": "LedgerParentName",
+            "primary": true,
+            "isVisible": true,
+            "cellConfig": {
+                "width": "150px"
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": false,
+            "verticalConfig": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1"
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "LedgerType",
+            "field": "LedgerType",
+            "title": "LedgerType",
+            "primary": true,
+            "isVisible": true,
+            "cellConfig": {
+                "width": "100px"
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": false,
+            "verticalConfig": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1"
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "GstRegistrationType",
+            "title": "GstRegistrationType",
+            "field": "GstRegistrationType",
+            "cellConfig": {
+                "width": "150px",
+                "rightAlign": true,
+                "showThousandsSeperator": false,
+                "tableFooter": {
+                    "showTotal": false
+                }
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2"
+                }
+            },
+            "isConsider": true,
+            "tableConfig": {
+                "footerConfig": {
+                    "enterAsTab": false,
+                    "isNotEmpty": false
+                }
+            }
+        },
+        {
+            "columnName": "PartyGSTIN",
+            "title": "PartyGSTIN",
+            "field": "PartyGSTIN",
+            "cellConfig": {
+                "width": "150px",
+                "rightAlign": true,
+                "showThousandsSeperator": true,
+                "tableFooter": {
+                    "showTotal": true
+                }
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isDate": true,
+            "defaultToday": true,
+            "isReadonly": false,
+            "autoFocus": false,
+            "isSearch": false,
+            "type": "date",
+            "isConsider": true
+        }
+    ],
+    "defaults": {
+        "data": []
+    }
+}
