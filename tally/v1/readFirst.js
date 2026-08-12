@@ -50,67 +50,69 @@ function getFirstRecord() {
     });
 }
 
-// ── 2. LAST RECORD: stream forward, capture the last top-level voucher ─────
-// We stream the whole file but only keep the most recently completed top-level object.
+// ── 2. LAST RECORD: read backwards from EOF in 512KB chunks ───────────────
 function getLastRecord() {
     return new Promise((resolve, reject) => {
-        const stream = createReadStream('./purchases.json', { encoding: 'utf8' });
+        const CHUNK = 524288; // 512 KB
+        const fileSize = statSync('./purchases.json').size;
+        const fd = openSync('./purchases.json', 'r');
 
-        let buffer = '';
-        let arrayStarted = false;
-        let depth = 0, inString = false, escape = false;
-        let topLevelStart = -1;
-        let lastCompleteRecord = null; // always overwrite — ends up being the last one
+        let tail = '';
+        let pos = fileSize;
 
-        stream.on('data', (chunk) => {
-            buffer += chunk;
+        try {
+            while (pos > 0) {
+                const readSize = Math.min(CHUNK, pos);
+                pos -= readSize;
 
-            if (!arrayStarted) {
-                const idx = buffer.indexOf('[');
-                if (idx === -1) { buffer = buffer.slice(-10); return; } // keep a little tail
-                buffer = buffer.slice(idx + 1);
-                arrayStarted = true;
-            }
+                const buf = Buffer.alloc(readSize);
+                readSync(fd, buf, 0, readSize, pos);
+                tail = buf.toString('utf8') + tail;
 
-            let i = 0;
-            while (i < buffer.length) {
-                const ch = buffer[i];
-                if (escape)                { escape = false; i++; continue; }
-                if (ch === '\\' && inString) { escape = true;  i++; continue; }
-                if (ch === '"')            { inString = !inString; i++; continue; }
-                if (inString)              { i++; continue; }
+                // We need to find the tallymessage array opening '['
+                const arrayIdx = tail.indexOf('[');
+                if (arrayIdx === -1) continue; // haven't read enough yet
 
-                if (ch === '{') {
-                    if (depth === 0) topLevelStart = i;
-                    depth++;
-                } else if (ch === '}') {
-                    depth--;
-                    if (depth === 0 && topLevelStart !== -1) {
-                        // Complete top-level object — parse and overwrite (last one wins)
-                        try {
-                            lastCompleteRecord = JSON.parse(buffer.slice(topLevelStart, i + 1));
-                        } catch (_) { /* ignore partial/corrupt entries */ }
-                        topLevelStart = -1;
-                        // Trim processed portion to keep buffer from growing unbounded
-                        buffer = buffer.slice(i + 1);
-                        i = -1; // restart scan from new buffer start
+                // Scan left→right, track the LAST complete top-level object
+                // (depth goes 0→1 at '{' and back to 0 at matching '}')
+                let lastStart = -1, lastEnd = -1;
+                let depth = 0, inString = false, escape = false;
+                let topLevelStart = -1;
+
+                for (let i = arrayIdx + 1; i < tail.length; i++) {
+                    const ch = tail[i];
+                    if (escape)               { escape = false; continue; }
+                    if (ch === '\\' && inString) { escape = true; continue; }
+                    if (ch === '"')           { inString = !inString; continue; }
+                    if (inString)             { continue; }
+
+                    if (ch === '{') {
+                        if (depth === 0) topLevelStart = i; // start of a top-level object
+                        depth++;
+                    } else if (ch === '}') {
+                        depth--;
+                        if (depth === 0 && topLevelStart !== -1) {
+                            lastStart = topLevelStart; // record every complete top-level object
+                            lastEnd   = i;
+                            topLevelStart = -1;
+                        }
                     }
                 }
-                i++;
+
+                // If we found at least one complete top-level object, return the last one
+                if (lastStart !== -1 && lastEnd !== -1) {
+                    closeSync(fd);
+                    resolve(JSON.parse(tail.slice(lastStart, lastEnd + 1)));
+                    return;
+                }
+                // No complete top-level object yet — read more from the end
             }
-
-            // If no top-level object is currently open, trim the buffer
-            if (topLevelStart === -1 && depth === 0) {
-                buffer = buffer.slice(-1); // keep last char for boundary safety
-            }
-        });
-
-        stream.on('end', () => {
-            if (lastCompleteRecord) resolve(lastCompleteRecord);
-            else reject(new Error('Last record not found'));
-        });
-
-        stream.on('error', reject);
+        } catch (e) {
+            closeSync(fd);
+            reject(e);
+        }
+        closeSync(fd);
+        reject(new Error('Last record not found'));
     });
 }
 
