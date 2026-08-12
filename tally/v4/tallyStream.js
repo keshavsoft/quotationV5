@@ -19,30 +19,30 @@ export function streamRecords(onRecord) {
         const stream = createReadStream(FILE, { encoding: 'utf8' });
 
         // Accumulation buffer and scan cursor
-        let buf = '';
-        let scanPos = 0;     // position we've scanned up to in buf
+        let buf        = '';
+        let scanPos    = 0;     // position we've scanned up to in buf
 
         // Parser state (persists across chunks — we never rescan old data)
         let arrayFound = false;
-        let depth = 0;
-        let inStr = false;
-        let esc = false;
-        let objStart = -1;    // buf index where current top-level object started
-        let recIdx = 0;
-        let stopped = false;
+        let depth      = 0;
+        let inStr      = false;
+        let esc        = false;
+        let objStart   = -1;    // buf index where current top-level object started
+        let recIdx     = 0;
+        let stopped    = false;
 
         // Completed objects found during this data event
-        let completed = [];    // [{s, e}]
+        let completed  = [];    // [{s, e}]
 
         function scan() {
             while (scanPos < buf.length && !stopped) {
                 const ch = buf[scanPos];
 
                 // string / escape tracking
-                if (esc) { esc = false; scanPos++; continue; }
+                if (esc)               { esc = false;  scanPos++; continue; }
                 if (ch === '\\' && inStr) { esc = true; scanPos++; continue; }
-                if (ch === '"') { inStr = !inStr; scanPos++; continue; }
-                if (inStr) { scanPos++; continue; }
+                if (ch === '"')        { inStr = !inStr; scanPos++; continue; }
+                if (inStr)             { scanPos++; continue; }
 
                 // structural chars (only reached when NOT inside a string)
                 if (ch === '{') {
@@ -68,8 +68,8 @@ export function streamRecords(onRecord) {
                 const bracket = buf.indexOf('[');
                 if (bracket === -1) { buf = ''; return; }
                 // Discard everything up to and including '['
-                buf = buf.slice(bracket + 1);
-                scanPos = 0;
+                buf        = buf.slice(bracket + 1);
+                scanPos    = 0;
                 arrayFound = true;
             } else {
                 // Append new chunk; scanPos already points past old content
@@ -104,14 +104,14 @@ export function streamRecords(onRecord) {
 
             // Trim buffer up to the last completed object
             if (!stopped && trimTo > 0) {
-                buf = buf.slice(trimTo);
+                buf     = buf.slice(trimTo);
                 scanPos = scanPos - trimTo;   // adjust scan cursor
                 if (objStart !== -1) objStart -= trimTo;
             }
         });
 
         stream.on('close', () => resolve(recIdx));
-        stream.on('end', () => resolve(recIdx));
+        stream.on('end',   () => resolve(recIdx));
         stream.on('error', reject);
     });
 }
