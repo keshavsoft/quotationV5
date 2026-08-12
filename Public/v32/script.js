@@ -106,7 +106,7 @@ const ensureKSTable = () => loadResource({
     isLoaded: () => !!window.KSTableComp,
     sources: [
         { type: "js", url: "/ks/table/v18/ai.js", label: "Local" },
-        { type: "js", url: "https://keshavsoft.github.io/tailwind-table-dom-comp/dist/v17/kstablecomp.js", label: "git" }
+        { type: "js", url: "https://keshavsoft.github.io/tailwind-table-dom-comp/dist/v18/kstablecomp.js", label: "git" }
     ]
 });
 
