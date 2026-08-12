@@ -13,7 +13,7 @@ const buildUpdateHandler = ({
 }) => {
     const localDeleteHandler = async ({ item, index, presentPk, updatedItem }) => {
         const fromService = await inUpdateService({ inEndPoint: inUpdateEndPoint, payload: updatedItem })
-        debugger;
+        // debugger;
         // console.log("vvvvvvvvvvv : ", fromService);
         if (fromService.ok) {
             const dataFromFetch = await inServices.actions.getData({
