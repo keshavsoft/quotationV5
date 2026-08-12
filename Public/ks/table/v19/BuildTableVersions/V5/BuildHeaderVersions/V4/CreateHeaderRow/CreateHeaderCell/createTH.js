@@ -3,6 +3,9 @@ const createTH = ({
     inClassName,
     inWidth
 }) => {
+    console.log("gggggggggggg : ", inKey,
+        inClassName,
+        inWidth);
 
     const th = document.createElement("th");
 

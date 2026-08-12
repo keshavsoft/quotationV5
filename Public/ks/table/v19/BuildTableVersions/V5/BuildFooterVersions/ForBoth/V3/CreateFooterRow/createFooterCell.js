@@ -5,6 +5,7 @@ const createFooterCell = ({ key, showDataList, inColumnsConfig,
     inOnKeyDown, inDefaultRow, inType, inRightAlign,
     inWidth, inputClassName, inDataListSource, inDataStore, inDataListFillName,
     inFooterConfig }) => {
+    // console.log("ooooooooooo: ", inTdClass);
 
     const td = document.createElement("td");
     td.className = inTdClass;

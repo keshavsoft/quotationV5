@@ -1,12 +1,8 @@
 import createTd from "./createTd.js";
-import applyWidth from "./applyWidth.js";
-import applyRightAlign from "./applyRightAlign.js";
-import getDisplayValue from "./getDisplayValue.js";
-import setCellContent from "./setCellContent.js";
 
 const createDataCell = ({
     value,
-    searchValue,
+    searchValue, inClassName,
     inCellConfig = {}, inOnKeyDownType,
     inEnterAsTab, inEvalformula, inEvalToControl
 }) => {
@@ -19,7 +15,7 @@ const createDataCell = ({
         inValue: value, inRightAlign: inCellConfig.rightAlign,
         inWidth: width, inSearchValue: searchValue,
         inEnterAsTab, inEvalformula, inEvalToControl,
-        inOnKeyDownType,
+        inOnKeyDownType, inClassName,
         inShowThousandsSeperator: inCellConfig.showThousandsSeperator
     });
 

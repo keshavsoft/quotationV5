@@ -3,7 +3,7 @@ import createTH from "./CreateTH/index.js";
 const startFunc = ({
     inKey,
     inCellConfig = {},
-    inData
+    inData, inTdClass
 }) => {
     // console.log("inCellConfig : ", inCellConfig);
 
@@ -25,7 +25,7 @@ const startFunc = ({
     const th = createTH({
         inKey,
         inShowTotal: showTotal,
-        inData,
+        inData, inTdClass,
         inShowThousandsSeperator:
             showThousandsSeperator,
         inWidth: width,

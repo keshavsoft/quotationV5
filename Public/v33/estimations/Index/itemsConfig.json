@@ -86,15 +86,31 @@
             "title": "Batch",
             "field": "Batch",
             "cellConfig": {
-                "width": "200px"
+                "width": "200px",
+                "uiClasses": {
+                    "table": {
+                        "tfoot": {
+                            "tdClass": "print-hide"
+                        }
+                    }
+                }
             },
             "isConsider": true,
             "verticalConfig": {},
             "tableConfig": {
+                "headerConfig": {
+                    "hideOnPrint": true,
+                    "className": "print-hide"
+                },
+                "bodyConfig": {
+                    "hideOnPrint": true,
+                    "className": "print-hide"
+                },
                 "footerConfig": {
                     "enterAsTab": true,
                     "isNotEmpty": true,
-                    "onKeyDownType": "Batch"
+                    "onKeyDownType": "Batch",
+                    "className": "print-hide"
                 }
             },
             "isVisible": true,

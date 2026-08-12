@@ -5,7 +5,8 @@ const startFunc = ({ inVisibleColumnsConfig, tr, inData }) => {
         tr.appendChild(createFooterCell({
             inKey: value.columnName,
             inCellConfig: value.cellConfig,
-            inData
+            inData,
+            inTdClass: value?.cellConfig?.uiClasses?.table?.tfoot?.tdClass,
         }));
     };
 };

@@ -38,7 +38,8 @@ const appendSerialCell = ({ tr, inShowSerial, index, inWidth }) => {
 
 const appendDataCells = ({ tr, item, columns, searchValue }) => {
     for (const [key, loopColumn] of Object.entries(columns)) {
-        // console.log("value : ", value);
+
+        // console.log("llllllllllll : ", loopColumn);
 
         tr.appendChild(createDataCell({
             value: item[loopColumn.columnName],
@@ -48,7 +49,8 @@ const appendDataCells = ({ tr, item, columns, searchValue }) => {
             inEnterAsTab: loopColumn?.tableConfig?.footerConfig?.enterAsTab,
             inEvalformula: loopColumn?.tableConfig?.footerConfig?.evalformula,
             inEvalToControl: loopColumn?.tableConfig?.footerConfig?.evalToControl,
-            inIsNotEmpty: loopColumn?.tableConfig?.footerConfig?.isNotEmpty
+            inIsNotEmpty: loopColumn?.tableConfig?.footerConfig?.isNotEmpty,
+            inClassName: loopColumn?.tableConfig?.bodyConfig?.className
         }));
     };
 };

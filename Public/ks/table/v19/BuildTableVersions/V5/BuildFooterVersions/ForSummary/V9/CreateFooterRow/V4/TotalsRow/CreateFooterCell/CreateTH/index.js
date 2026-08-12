@@ -8,13 +8,13 @@ const createTH = ({
     inShowTotal = false,
     inData,
     inShowThousandsSeperator = false,
-    inWidth,
+    inWidth, inTdClass = "px-4 py-2 border",
     inRightAlign,
     isQuantity = false
 }) => {
 
     const th = document.createElement("th");
-    th.className = "px-4 py-2 border";
+    th.className = inTdClass;
     th.dataset.columnName = inKey;
     th.dataset.showTotal = inShowTotal;
     th.dataset.showThousandsSeperator = inShowThousandsSeperator;

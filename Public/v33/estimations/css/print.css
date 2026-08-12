@@ -3,6 +3,7 @@
    ========================================================================== */
 
 @media print {
+
     .ks .table-responsive,
     .ks .overflow-auto,
     .ks .overflow-x-auto {
@@ -25,6 +26,10 @@
     .ks header,
     .ks #header,
     .ks ks-nav {
+        display: none !important;
+    }
+
+    .print-hide {
         display: none !important;
     }
 }

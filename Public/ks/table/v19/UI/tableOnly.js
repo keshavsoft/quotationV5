@@ -31,7 +31,7 @@ const startFunc = ({
     const footerOptions = options.table?.footer;
 
     const toSaveRow = dataStore.getToSaveRow();
-
+    // debugger
     buildHeader({
         inContainerEl: containerEl,
         inDom: dom,
