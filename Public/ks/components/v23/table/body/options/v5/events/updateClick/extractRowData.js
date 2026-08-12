@@ -1,27 +1,66 @@
 /**
- * Extracts input values inside row cells into a data object.
+ * Story: When the user clicks "Update", the row is still in edit mode —
+ * every data cell contains a live <input> element with the user's new value.
+ * This module's job is to read that edited state and package it into a
+ * plain object that the rest of the system can store or send to a server.
  *
- * @param {HTMLTableRowElement} closestTr - The target row element.
- * @param {Object} options - Component options containing initial row item.
- * @returns {Object} Gathered key-value pairs representing the edited row data.
+ * Step 1 — Seed the object with the row's primary key (always an integer,
+ *           because delete/update handlers compare PKs with strict equality).
+ * Step 2 — Walk every data cell (skip the last "options" cell).
+ * Step 3 — For each cell that contains a named <input>, capture its current
+ *           value under the input's `name` attribute as the key.
+ * Result — A flat { pk, field1, field2, … } object ready to hand off to
+ *           `options.onUpdateFunc`.
+ *
+ * @param {HTMLTableRowElement} closestTr - The table row currently being saved.
+ * @returns {Object} Flat key-value map of the edited row data, including pk.
  */
-const extractRowData = ({ closestTr }) => {
-    const tds = closestTr.querySelectorAll("td");
-    // debugger;
-    //here intentionally changed pk to integer, as del and update is written for integer only for pk comparision
-    const updatedItem = { pk: parseInt(closestTr.dataset.pk) };
 
+/**
+ * Reads a single cell and, if it contains a named input, returns { name, value }.
+ * Returns null when there is nothing useful to extract (no input / no name).
+ *
+ * @param {HTMLTableCellElement} td - A data cell from the row.
+ * @returns {{ name: string, value: string } | null}
+ */
+const extractInputFromCell = (td) => {
+    const input = td.querySelector("input");
+    if (input && input.name) {
+        return { name: input.name, value: input.value };
+    }
+    return null;
+};
+
+/**
+ * Walks every data cell in the row (skipping the last options cell),
+ * calls extractInputFromCell on each, and merges the results into `updatedItem`.
+ *
+ * @param {NodeList}  tds         - All <td> elements in the row.
+ * @param {Object}    updatedItem - The accumulator object to populate in place.
+ */
+const collectFieldsFromCells = ({ tds, updatedItem }) => {
     tds.forEach((td, i) => {
-        if (i === tds.length - 1) return;
+        if (i === tds.length - 1) return; // skip the options/actions cell
 
-        const input = td.querySelector("input");
-        if (input && input.name) {
-            // console.log("iiiiiiiii--------- : ", input.name);
-
-            updatedItem[input.name] = input.value;
+        const field = extractInputFromCell(td);
+        if (field) {
+            updatedItem[field.name] = field.value;
         }
     });
-    // console.log("uuuuuuuuuuuu--------- : ", updatedItem);
+};
+
+const extractRowData = ({ closestTr }) => {
+    const tds = closestTr.querySelectorAll("td");
+
+    // PK is always stored as an integer — del/update handlers rely on strict comparison.
+    let updatedItem = {};
+
+    collectFieldsFromCells({ tds, updatedItem });
+
+    updatedItem = {
+        ...updatedItem,
+        pk: parseInt(closestTr.dataset.pk)
+    };
 
     return updatedItem;
 };
