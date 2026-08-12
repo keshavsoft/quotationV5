@@ -15,7 +15,8 @@ const clickFuncToRun = async ({ inCurrentTarget }) => {
     const config = structuredClone(configJson);
 
     config.options.firstRow.showSearch = true;
-    config.options.firstRow.columnWiseSearch = true;
+    config.options.firstRow.columnWiseSearch = false;
+    config.options.firstRow.allColumns = true;
 
     const fromFetch = await fetch(config?.endPoints?.read);
     const fromFetchAsJson = await fromFetch.json();

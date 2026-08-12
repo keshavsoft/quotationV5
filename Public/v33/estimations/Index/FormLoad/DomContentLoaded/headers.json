@@ -63,12 +63,12 @@
             "dropdownType": "responsive",
             "dropdownItems": [
                 {
-                    "text": "Pur Exp",
-                    "href": "../purExpVouchers/index.html"
+                    "text": "batchList",
+                    "href": "../batchList/index.html"
                 },
                 {
-                    "text": "Ledger Names",
-                    "href": "../ledgerNames/index.html"
+                    "text": "batchAll",
+                    "href": "../batchAll/index.html"
                 }
             ]
         },

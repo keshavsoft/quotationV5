@@ -1,6 +1,6 @@
 {
     "containerId": "kSTableContainer",
-    "tableName": "Estimations---------",
+    "tableName": "All batches",
     "mode": "create",
     "layout": {
         "verticalPosition": "top",
