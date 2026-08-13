@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stock Items</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            margin-bottom: 24px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            background: #eee;
+        }
+
+        .status {
+            margin-bottom: 20px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Stock Items</h1>
+
+    <div class="status" id="status">
+        Loading stock items...
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock Item Name</th>
+                    <th>Reserved Name</th>
+                    <th>Stock Item Type</th>
+                    <th>Category</th>
+                    <th>Parent Name</th>
+                    <th>Base Units</th>
+                    <th>GST Applicable</th>
+                    <th>GST Supply Type</th>
+                    <th>SGST Rate</th>
+                    <th>CGST Rate</th>
+                    <th>PK</th>
+                </tr>
+            </thead>
+
+            <tbody id="stockItemsBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        async function loadStockItems() {
+            const statusElement =
+                document.getElementById("status");
+
+            const tableBody =
+                document.getElementById("stockItemsBody");
+
+            try {
+                const response =
+                    await fetch("/api/v2/StockItems/showAll");
+
+                if (!response.ok) {
+                    throw new Error(
+                        `Request failed: ${response.status}`
+                    );
+                }
+
+                const stockItems =
+                    await response.json();
+
+                tableBody.innerHTML = "";
+
+                if (stockItems.length === 0) {
+                    statusElement.textContent =
+                        "No stock items found.";
+
+                    return;
+                }
+
+                stockItems.forEach((item) => {
+                    const row =
+                        document.createElement("tr");
+
+                    row.innerHTML = `
+                        <td>${item.StockItemName ?? ""}</td>
+                        <td>${item.StockItemReservedName ?? ""}</td>
+                        <td>${item.StockItemType ?? ""}</td>
+                        <td>${item.StockCategory ?? ""}</td>
+                        <td>${item.StockParentName ?? ""}</td>
+                        <td>${item.StockBaseUnits ?? ""}</td>
+                        <td>${item.StockGstApplicable ?? ""}</td>
+                        <td>${item.StockGstTypeOfSupply ?? ""}</td>
+                        <td>${item.sgstRate ?? ""}</td>
+                        <td>${item.cgstRate ?? ""}</td>
+                        <td>${item.pk ?? ""}</td>
+                    `;
+
+                    tableBody.appendChild(row);
+                });
+
+                statusElement.textContent =
+                    `${stockItems.length} stock item(s) loaded.`;
+            } catch (error) {
+                statusElement.textContent =
+                    "Failed to load stock items.";
+
+                statusElement.classList.add("error");
+
+                console.error(error);
+            }
+        }
+
+        loadStockItems();
+    </script>
+
+</body>
+</html>
