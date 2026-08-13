@@ -1,0 +1,1 @@
+GET http://localhost:3025/api/v3/purchases/voucherTypes
