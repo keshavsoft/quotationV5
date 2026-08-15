@@ -75,7 +75,7 @@
         "create": "/Api/v5/BillsTable/insertWithMeta",
         "update": "",
         "delete": "/Api/v5/BillsTable/del",
-        "read": "/Api/v2/purchases/getBatchArray",
+        "read": "/Api/v3/purchases/getBatchArray",
         "groupBy": "/Api/v3/ItemsTable/forStock",
         "read1": "/Api/V1/ItemsTable/ShowAll",
         "find": "",
@@ -204,6 +204,176 @@
             "columnName": "date",
             "field": "date",
             "title": "date",
+            "primary": true,
+            "isVisible": true,
+            "cellConfig": {
+                "width": "150px"
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": false,
+            "verticalConfig1": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1",
+                "showButton": {
+                    "textToShow": "filter",
+                    "className": "flex-1 px-4 py-1 bg-green-500 text-white rounded"
+                },
+                "showCheckBox": {
+                    "textToShow": "consider",
+                    "className": ""
+                }
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "godownname",
+            "field": "godownname",
+            "title": "godownname",
+            "primary": true,
+            "isVisible": true,
+            "cellConfig": {
+                "width": "150px"
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": false,
+            "verticalConfig1": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1",
+                "showButton": {
+                    "textToShow": "filter",
+                    "className": "flex-1 px-4 py-1 bg-green-500 text-white rounded"
+                },
+                "showCheckBox": {
+                    "textToShow": "consider",
+                    "className": ""
+                }
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "date",
+            "field": "date",
+            "title": "date",
+            "primary": true,
+            "isVisible": true,
+            "cellConfig": {
+                "width": "150px"
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": false,
+            "verticalConfig1": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1",
+                "showButton": {
+                    "textToShow": "filter",
+                    "className": "flex-1 px-4 py-1 bg-green-500 text-white rounded"
+                },
+                "showCheckBox": {
+                    "textToShow": "consider",
+                    "className": ""
+                }
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "batchactualqty",
+            "field": "batchactualqty",
+            "title": "batchactualqty",
+            "primary": true,
+            "isVisible": true,
+            "cellConfig": {
+                "width": "150px"
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": false,
+            "verticalConfig1": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1",
+                "showButton": {
+                    "textToShow": "filter",
+                    "className": "flex-1 px-4 py-1 bg-green-500 text-white rounded"
+                },
+                "showCheckBox": {
+                    "textToShow": "consider",
+                    "className": ""
+                }
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "batchbilledqty",
+            "field": "batchbilledqty",
+            "title": "batchbilledqty",
+            "primary": true,
+            "isVisible": true,
+            "cellConfig": {
+                "width": "150px"
+            },
+            "uiClasses": {
+                "form": {
+                    "rowClass": "flex items-center space-x-4 w-1/2",
+                    "labelClass": "w-36 text-sm font-medium"
+                }
+            },
+            "isSearchable": false,
+            "verticalConfig1": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1",
+                "showButton": {
+                    "textToShow": "filter",
+                    "className": "flex-1 px-4 py-1 bg-green-500 text-white rounded"
+                },
+                "showCheckBox": {
+                    "textToShow": "consider",
+                    "className": ""
+                }
+            },
+            "isConsider": true
+        },
+        {
+            "columnName": "batchamount",
+            "field": "batchamount",
+            "title": "batchamount",
             "primary": true,
             "isVisible": true,
             "cellConfig": {

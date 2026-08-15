@@ -51,15 +51,18 @@ const startFunc = ({ inContainerEl, inFirstRow }) => {
         timeout = setTimeout(() => {
 
             clearHighlights({ rows });
+            // console.log("inUpdateFooter : ", inUpdateFooter);
 
-            if (!searchValue) {
+            if (inUpdateFooter) {
+                if (!searchValue) {
+                    updateFooter({
+                        inUpdateFooter,
+                        inContainerEl
+                    });
 
-                updateFooter({
-                    inUpdateFooter,
-                    inContainerEl
-                });
+                    return;
 
-                return;
+                };
 
             };
 
@@ -73,11 +76,13 @@ const startFunc = ({ inContainerEl, inFirstRow }) => {
                 regex
             });
 
-            updateFooter({
-                inUpdateFooter,
-                inContainerEl
-            });
+            if (!inUpdateFooter) {
+                updateFooter({
+                    inUpdateFooter,
+                    inContainerEl
+                });
 
+            };
         }, 400);
 
     });
