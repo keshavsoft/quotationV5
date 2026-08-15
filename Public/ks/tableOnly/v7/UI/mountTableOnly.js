@@ -3,6 +3,7 @@ import { buildFullUI } from "./compose/buildFullUI.js";
 import searchFuncs from "../SearchFuncs/V6/index.js";
 import setFocus from "../SetFocus/V4/index.js";
 import tableCodeOnly from "./tableCodeOnly.js";
+import buildDataLists from "../BuildDataLists/V5/addToDom.js";
 
 const startFunc = ({
     containerEl,
@@ -15,6 +16,7 @@ const startFunc = ({
 }) => {
     const showSerial = options.table.showSerial;
     const serialWidth = options.table.serialWidth;
+    const showDataList = options.table.showDataList;
 
     const showSearch = options.firstRow.showSearch;
 
@@ -26,6 +28,9 @@ const startFunc = ({
     const inDeleteType = options?.table?.body?.deleteType;
     const inDeleteIconSize = options?.table?.body?.deleteIconSize;
     const firstRow = options?.firstRow;
+
+    const dataListColumns = dataStore.getDataListColumns();
+
     // debugger;
     buildFullUI({
         containerEl: containerEl,
@@ -36,7 +41,7 @@ const startFunc = ({
         inShowActions: showActions, inShowShow,
         inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize,
         inFirstRow: options?.firstRow, dataStore,
-        inConfig
+        inConfig, inShowBody: false
     });
 
     tableCodeOnly({
@@ -45,9 +50,19 @@ const startFunc = ({
         dom,
         options,
         uiClasses,
-        inDefaults,
+        inDefaults, inShowBody: false,
         inConfig, callbacks
     });
+
+    if (showDataList) {
+        buildDataLists({
+            inContainerEl: containerEl,
+            inDataStore: dataStore,
+            inDom: dom,
+            inData: inDefaults?.data, inShowLog: true,
+            inDataListColumns: dataListColumns
+        });
+    };
 
     if (showSearch) {
         searchFuncs({

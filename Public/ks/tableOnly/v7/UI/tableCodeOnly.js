@@ -8,7 +8,7 @@ const startFunc = ({
     dom,
     options,
     uiClasses,
-    inDefaults,
+    inDefaults, inShowBody = true,
     inConfig, callbacks
 }) => {
     // debugger
@@ -38,13 +38,16 @@ const startFunc = ({
         inOptionsWidth: optionsWidth,
     });
 
-    const tableBody = dom.getTableBody(containerEl);
+    if (inShowBody) {
+        const tableBody = dom.getTableBody(containerEl);
 
-    buildBody({
-        inVisibleColumnsConfig: visibleColumnsConfig,
-        inTableBody: tableBody,
-        inData: data, inConfig, callbacks
-    });
+        buildBody({
+            inVisibleColumnsConfig: visibleColumnsConfig,
+            inTableBody: tableBody,
+            inData: data, inConfig, callbacks
+        });
+    };
+
     // debugger;
     if (showFooter) {
         buildFooter({

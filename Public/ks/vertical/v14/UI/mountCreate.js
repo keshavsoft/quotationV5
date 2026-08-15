@@ -18,9 +18,10 @@ const startFunc = ({
 
     const data = dataStore.getData();
     const showSearch = options?.firstRow?.showSearch;
+    const showDataList = options?.vertical?.showDataList;
 
     const findDataFromParams = dataStore.getFindFromParams();
-// debugger
+    // debugger
     const isFormDisabled = options.vertical.isFormDisabled;
     const showSaveButton = options.vertical.showSaveButton;
     const verticalOptions = options.vertical;
@@ -52,14 +53,15 @@ const startFunc = ({
         containerEl.prepend(searchForm);
     };
 
-    // debugger;
-    buildDataLists({
-        inContainerEl: containerEl,
-        inDataStore: dataStore,
-        inDom: dom,
-        inData: data,
-        inDataListColumns: visibleColumnsConfig
-    });
+    if (showDataList) {
+        buildDataLists({
+            inContainerEl: containerEl,
+            inDataStore: dataStore,
+            inDom: dom,
+            inData: data,
+            inDataListColumns: visibleColumnsConfig
+        });
+    };
 
     FocusSet({
         inContainerEl: containerEl,

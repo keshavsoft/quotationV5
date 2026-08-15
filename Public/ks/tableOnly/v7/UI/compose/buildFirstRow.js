@@ -2,6 +2,7 @@ import allColumns from "../builders/buildHeaderRow/allColumns/index.js";
 import columnWiseSearch from "../builders/buildHeaderRow/columnWiseSearch/index.js";
 
 const startFunc = ({ inFirstRow, inTitleText, dataStore, inConfig }) => {
+    // debugger
     if (inFirstRow?.allColumns) {
         const fromBuildHeaderRow = allColumns({ inTitleText });
 

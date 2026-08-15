@@ -1,6 +1,6 @@
-const readDataListSource = ({ columnConfig, dataStore }) => {
+const readDataListSource = ({ columnConfig, dataStore, inData }) => {
     if (columnConfig.dataListSource === columnConfig.columnName) {
-        return ifSameTable({ columnConfig, dataStore });
+        return ifSameTable({ columnConfig, dataStore, inData });
     } else {
         return ifNotSameTable({ columnConfig, dataStore });
     };
@@ -22,8 +22,8 @@ const ifNotSameTable = ({ columnConfig, dataStore }) => {
     return data.map(row => row?.[key]);
 };
 
-const ifSameTable = ({ columnConfig, dataStore }) => {
-    const dataFromStore = dataStore.getData();
+const ifSameTable = ({ columnConfig, inData, dataStore }) => {
+    const dataFromStore = inData;
 
     const neededArray = dataFromStore.map(element => {
         return element[columnConfig.columnName];

@@ -5,7 +5,7 @@ import readDataListSource from "./readDataListSource.js";
 const orchestrateDataLists = ({
     inContainerEl,
     inDataStore,
-    inDom,
+    inDom, inData,
     inDataListColumns
 }) => {
     const dataListContainer = inDom.getDataListContainerClass(inContainerEl);
@@ -16,7 +16,7 @@ const orchestrateDataLists = ({
 
     inDataListColumns.forEach(columnConfig => {
         const sourceData = readDataListSource({
-            columnConfig,
+            columnConfig, inData,
             dataStore: inDataStore
         });
 

@@ -102,5 +102,6 @@ window.KSAiCompTable = KSAiTable;
 window.ks = window.ks || {};
 window.ks.classes = window.ks.classes || {};
 window.ks.classes.compTable = KSAiTable;
+window.ks.classes.compTable.version = "19";
 
 export { KSAiTable };
