@@ -1,6 +1,7 @@
 {
+    "clearOld": false,
     "containerId": "kSTableContainer",
-    "tableName": "All batches",
+    "tableName": "forStock",
     "mode": "create",
     "layout": {
         "verticalPosition": "top",
@@ -19,11 +20,12 @@
         ],
         "table": {
             "showFooterRows": false,
-            "showDataList": false,
+            "showDataList": true,
             "showSave": false,
             "showActions": false,
             "showSerial": true,
             "showFooter": false,
+            "showBody": false,
             "footer": {
                 "showAggregateRows": true,
                 "showTotals": true
@@ -44,7 +46,8 @@
             "layoutType3": "labelAbove",
             "layoutType4": "labelAbove",
             "showButtons": false,
-            "enterAsTab": false
+            "enterAsTab": false,
+            "showDataList": false
         }
     },
     "callbacks": {
@@ -59,6 +62,13 @@
             "footer": {
                 "onSave": "function"
             }
+        },
+        "vertical": {
+            "columns": {
+                "stockitemname": {
+                    "onClick": "function"
+                }
+            }
         }
     },
     "endPoints": {
@@ -66,7 +76,7 @@
         "update": "",
         "delete": "/Api/v5/BillsTable/del",
         "read": "/Api/v2/purchases/getBatchArray",
-        "groupBy": "/Api/v2/ItemsTable/groupBy",
+        "groupBy": "/Api/v3/ItemsTable/forStock",
         "read1": "/Api/V1/ItemsTable/ShowAll",
         "find": "",
         "filter": "",
@@ -82,7 +92,8 @@
                 "width": "150px",
                 "tdClass": "px-4 py-2 border"
             },
-            "dataListSource": "",
+            "dataListFillName": "",
+            "dataListSource": "stockitemname",
             "tableFooterDataListShow": true,
             "uiClasses": {
                 "form": {
@@ -96,6 +107,18 @@
                 "footerConfig": {
                     "enterAsTab": true,
                     "isNotEmpty": true
+                }
+            },
+            "verticalConfig": {
+                "enterAsTab": false,
+                "allowOnChange": false,
+                "onKeyDown": false,
+                "onKeyDownType": "onDataListChange",
+                "type": "",
+                "tabIndex": "-1",
+                "showButton": {
+                    "textToShow": "filter",
+                    "className": "flex-1 px-4 py-1 bg-green-500 text-white rounded"
                 }
             }
         },
@@ -115,7 +138,7 @@
                 }
             },
             "isSearchable": false,
-            "verticalConfig": {
+            "verticalConfig1": {
                 "enterAsTab": false,
                 "allowOnChange": false,
                 "onKeyDown": false,
@@ -141,7 +164,7 @@
                 }
             },
             "isSearchable": false,
-            "verticalConfig": {
+            "verticalConfig1": {
                 "enterAsTab": false,
                 "allowOnChange": false,
                 "onKeyDown": false,
@@ -167,7 +190,7 @@
                 }
             },
             "isSearchable": false,
-            "verticalConfig": {
+            "verticalConfig1": {
                 "enterAsTab": false,
                 "allowOnChange": false,
                 "onKeyDown": false,
@@ -193,7 +216,7 @@
                 }
             },
             "isSearchable": false,
-            "verticalConfig": {
+            "verticalConfig1": {
                 "enterAsTab": false,
                 "allowOnChange": false,
                 "onKeyDown": false,

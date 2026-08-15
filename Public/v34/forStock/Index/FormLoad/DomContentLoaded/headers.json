@@ -10,36 +10,15 @@
     },
     "items": [
         {
-            "text": "estimations",
-            "id": "estimationsHtmlId",
+            "text": "All",
+            "id": "AllHtmlId",
             "icon": [],
             "uiClasses": {
                 "aClass": "",
                 "svgDivClass": "size-10"
             },
             "svgName": "squaresPlus",
-            "href": "../estimations/index.html"
-        },
-        {
-            "text": "search",
-            "id": "searchHtmlId",
-            "icon": [],
-            "uiClasses": {
-                "aClass": "",
-                "svgDivClass": "size-10"
-            },
-            "svgName": "squaresPlus",
-            "href1": "../both/index.html"
-        },
-        {
-            "text": "showAll",
-            "id": "showAllHtmlId",
-            "icon": [],
-            "uiClasses": {
-                "aClass": "",
-                "svgDivClass": "size-10"
-            },
-            "svgName": "arrowDown"
+            "href": "./allLines/index.html"
         },
         {
             "text": "Print",

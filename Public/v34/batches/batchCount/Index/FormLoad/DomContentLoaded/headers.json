@@ -5,42 +5,41 @@
         "brandClass1": "text-sm"
     },
     "title": {
-        "text": "BatchList",
+        "text": "Batch Count",
         "htmlId": "htmlId"
     },
     "items": [
         {
-            "text": "All",
-            "id": "AllHtmlId",
+            "text": "estimations",
+            "id": "estimationsHtmlId",
             "icon": [],
             "uiClasses": {
                 "aClass": "",
                 "svgDivClass": "size-10"
             },
             "svgName": "squaresPlus",
-            "href": "./batchAll/index.html"
+            "href": "../estimations/index.html"
         },
         {
-            "text": "count",
-            "id": "countHtmlId",
+            "text": "search",
+            "id": "searchHtmlId",
             "icon": [],
             "uiClasses": {
                 "aClass": "",
                 "svgDivClass": "size-10"
             },
             "svgName": "squaresPlus",
-            "href": "./batchCount/index.html"
+            "href1": "../both/index.html"
         },
         {
-            "text": "list",
-            "id": "listHtmlId",
+            "text": "showAll",
+            "id": "showAllHtmlId",
             "icon": [],
             "uiClasses": {
                 "aClass": "",
                 "svgDivClass": "size-10"
             },
-            "svgName": "arrowDown",
-            "href": "./batchList/index.html"
+            "svgName": "arrowDown"
         },
         {
             "text": "Print",

@@ -1,4 +1,4 @@
-import configJson from "../../../../configs/billShow.json" with { type: "json" };
+import configJson from "../../../../tableShow.json" with { type: "json" };
 
 const jFLocalToInputkSTableContainer = (inValue) => {
     const jVarLocalHtmlId = 'kSTableContainer';
@@ -19,7 +19,9 @@ const prepareArray = (inFetchData) => {
         })
     };
 
-    return toReturnArray;
+    const sortedArray = toReturnArray.sort((a, b) => a.stockitemname.localeCompare(b.stockitemname));
+
+    return sortedArray;
 };
 
 const clickFuncToRun = async ({ inCurrentTarget }) => {
@@ -27,8 +29,8 @@ const clickFuncToRun = async ({ inCurrentTarget }) => {
 
     const config = structuredClone(configJson);
 
-    config.options.firstRow.showSearch = true;
-    config.options.firstRow.allColumns = true;
+    // config.options.firstRow.showSearch = true;
+    // config.options.firstRow.allColumns = true;
 
     const fromFetch = await fetch(config?.endPoints?.read);
     const dataFromFetch = await fromFetch.json();

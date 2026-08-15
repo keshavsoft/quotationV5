@@ -24,7 +24,7 @@ const startFunc = ({
 
     const defaults = inDefaults;
     const data = defaults.data;
-
+    // debugger;
     buildHeader({
         inContainerEl: containerEl,
         inDom: dom,
@@ -37,7 +37,7 @@ const startFunc = ({
         inShowActions: showActions,
         inOptionsWidth: optionsWidth,
     });
-    debugger;
+
     if (inShowBody) {
         const tableBody = dom.getTableBody(containerEl);
 

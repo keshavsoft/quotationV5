@@ -15,8 +15,8 @@ const clickFuncToRun = async ({ inCurrentTarget }) => {
     const config = structuredClone(configJson);
 
     config.options.firstRow.showSearch = true;
-    config.options.firstRow.columnWiseSearch = false;
-    config.options.firstRow.allColumns = true;
+    config.options.firstRow.columnWiseSearch = true;
+    config.options.firstRow.allColumns = false;
 
     const fromFetch = await fetch(config?.endPoints?.read);
     const fromFetchAsJson = await fromFetch.json();
@@ -46,7 +46,7 @@ const clickFuncToRun = async ({ inCurrentTarget }) => {
         };
     }
 
-    const ksTable1 = new window.ks.classes.tableShowOnly(config);
+    ksTable1 = new window.ks.classes.tableShowOnly(config);
     ksTable1.initShowTable();
 };
 

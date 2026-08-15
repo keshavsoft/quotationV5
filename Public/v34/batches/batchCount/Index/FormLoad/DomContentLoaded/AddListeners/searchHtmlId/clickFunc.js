@@ -1,4 +1,4 @@
-import configJson from "../../../../configs/billShow.json" with { type: "json" };
+import configJson from "../../../../tableShow.json" with { type: "json" };
 
 const jFLocalToInputkSTableContainer = (inValue) => {
     const jVarLocalHtmlId = 'kSTableContainer';
@@ -9,32 +9,35 @@ const jFLocalToInputkSTableContainer = (inValue) => {
     };
 };
 
+const prepareArray = (inFetchData) => {
+    let toReturnArray = [];
+
+    for (const [key, value] of Object.entries(inFetchData)) {
+        toReturnArray.push({
+            stockitemname: key,
+            batchCount: value.length
+        })
+    };
+
+    const sortedArray = toReturnArray.sort((a, b) => a.stockitemname.localeCompare(b.stockitemname));
+
+    return sortedArray;
+};
+
 const clickFuncToRun = async ({ inCurrentTarget }) => {
     jFLocalToInputkSTableContainer("");
 
     const config = structuredClone(configJson);
 
     config.options.firstRow.showSearch = true;
-    config.options.firstRow.columnWiseSearch = false;
     config.options.firstRow.allColumns = true;
 
     const fromFetch = await fetch(config?.endPoints?.read);
-    const fromFetchAsJson = await fromFetch.json();
+    const dataFromFetch = await fromFetch.json();
 
-    const sortedMembers = fromFetchAsJson.toSorted((a, b) => {
-        // Normalize missing values to empty strings safely
-        const itemA = a.stockitemname ? String(a.stockitemname).trim() : "";
-        const itemB = b.stockitemname ? String(b.stockitemname).trim() : "";
+    const arrayData = prepareArray(dataFromFetch);
 
-        const batchA = a.batchname ? String(a.batchname).trim() : "";
-        const batchB = b.batchname ? String(b.batchname).trim() : "";
-
-        // Sort with options: 'numeric: true' treats '0.75' correctly, 'sensitivity: base' ignores case distinctions
-        return itemA.localeCompare(itemB, undefined, { sensitivity: 'base', numeric: true }) ||
-            batchA.localeCompare(batchB, undefined, { sensitivity: 'base', numeric: true });
-    });
-
-    config.defaults.data = sortedMembers;
+    config.defaults.data = arrayData;
 
     if (config.callbacks) {
         if (config.callbacks.table.body.show) {

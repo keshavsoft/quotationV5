@@ -1,6 +1,6 @@
 {
     "containerId": "kSTableContainer",
-    "tableName": "Estimations",
+    "tableName": "Batch Count",
     "mode": "create",
     "layout": {
         "verticalPosition": "top",
@@ -24,6 +24,7 @@
             "showActions": false,
             "showSerial": true,
             "showFooter": false,
+            "showBody": true,
             "footer": {
                 "showAggregateRows": true,
                 "showTotals": true

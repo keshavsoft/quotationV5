@@ -34,17 +34,19 @@ export const buildFullUI = ({ containerEl, inTableName, inIsDataListNeeded = tru
 
     if (inIsShowHeaderRow) {
         // debugger
-        const fromBuildFirstRow = buildFirstRow({
+        const { header } = buildFirstRow({
             containerEl: root, dataStore, dom,
             inTitleText: inTableName,
             inFirstRow: inFirstRow, inConfig
         })
         // const { header } = buildHeaderRow({ inTitleText: inTableName });
-        if (fromBuildFirstRow?.header) {
+        root.prepend(header);
 
-            root.prepend(fromBuildFirstRow);
-            // children.push(fromBuildFirstRow?.header);
-        };
+        // if (fromBuildFirstRow?.header) {
+
+
+        //     // children.push(fromBuildFirstRow?.header);
+        // };
     };
 
     // root.replaceChildren(...children);
