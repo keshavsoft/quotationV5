@@ -19,7 +19,9 @@ export const buildFullUI = ({ containerEl, inTableName, inIsDataListNeeded = tru
     if (inIsShowHeaderRow) {
         const { header } = buildHeaderRow({ inTitleText: inTableName });
 
-        children.push(header);
+        root.appendChild(header);
+
+        // children.push(header);
     };
 
     // if (inIsTableNeeded) {
@@ -30,10 +32,13 @@ export const buildFullUI = ({ containerEl, inTableName, inIsDataListNeeded = tru
 
     if (inIsDataListNeeded) {
         const { container: dataList } = buildDataListContainer();
-        children.push(dataList);
+
+        root.appendChild(dataList);
+
+        // children.push(dataList);
     };
 
     // root.replaceChildren(...children);
-    root.prepend(...children);
+    // root.prepend(...children);
 
 };

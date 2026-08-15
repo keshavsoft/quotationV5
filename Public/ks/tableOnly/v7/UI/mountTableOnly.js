@@ -21,6 +21,7 @@ const startFunc = ({
     const showSearch = options.firstRow.showSearch;
 
     const showActions = options?.table?.showActions;
+    const showBody = options?.table?.showBody;
 
     const inShowShow = options?.table?.body?.showShow;
     const inShowEdit = options?.table?.body?.showEdit;
@@ -42,7 +43,7 @@ const startFunc = ({
         inShowActions: showActions, inShowShow,
         inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize,
         inFirstRow: options?.firstRow, dataStore,
-        inConfig, inShowBody: false, clearOld
+        inConfig, inShowBody: showBody, clearOld
     });
 
     tableCodeOnly({
@@ -51,7 +52,7 @@ const startFunc = ({
         dom,
         options,
         uiClasses,
-        inDefaults, inShowBody: false,
+        inDefaults, inShowBody: showBody,
         inConfig, callbacks
     });
 

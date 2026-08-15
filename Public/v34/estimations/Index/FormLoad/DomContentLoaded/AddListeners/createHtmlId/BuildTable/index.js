@@ -1,7 +1,7 @@
 import { clearTableContainer } from "./helpers/dom/clearTableContainer.js";
 import { initVertical } from "./helpers/ks/vertical.js";
 import { onSuccess } from "./helpers/ks/onSuccess.js";
-import config from "./configs/config.json" with {type: "json"};
+import config from "../../../../../verticalConfig.json" with {type: "json"};
 
 const getLastQuotation = async () => {
     const fromFetch = await fetch(config?.endPoints?.lastRecord)

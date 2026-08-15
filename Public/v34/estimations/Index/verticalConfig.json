@@ -39,7 +39,8 @@
             "layoutType2": "singleLine",
             "layoutType3": "labelAbove",
             "layoutType": "labelAbove",
-            "showButtons": true
+            "showButtons": true,
+            "showDataList": true
         }
     },
     "callbacks": {

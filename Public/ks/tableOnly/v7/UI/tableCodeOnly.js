@@ -37,7 +37,7 @@ const startFunc = ({
         inShowActions: showActions,
         inOptionsWidth: optionsWidth,
     });
-
+    debugger;
     if (inShowBody) {
         const tableBody = dom.getTableBody(containerEl);
 
