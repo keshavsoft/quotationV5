@@ -9,8 +9,8 @@
     "options": {
         "firstRow": {
             "showSearch": true,
-            "allColumns": false,
-            "columnWiseSearch": true
+            "allColumns": true,
+            "columnWiseSearch": false
         },
         "enabledSections": [
             "vertical",

@@ -33,7 +33,7 @@ const startFunc = ({
 
     const dataListColumns = dataStore.getDataListColumns();
 
-    debugger;
+    // debugger;
     buildFullUI({
         containerEl: containerEl, dom,
         inTableName: inConfig.tableName,
