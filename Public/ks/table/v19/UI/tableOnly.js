@@ -11,7 +11,7 @@ const startFunc = ({
     endPoints,
     uiClasses,
     callbacks,
-    inConfig
+    inConfig, inShowBody = true
 }) => {
     const visibleColumnsConfig = dataStore.getVisibleColumnsConfig();
 
@@ -47,16 +47,19 @@ const startFunc = ({
 
     const tableBody = dom.getTableBody(containerEl);
 
-    buildBody({
-        inVisibleColumnsConfig: visibleColumnsConfig,
-        inTableBody: tableBody,
-        inData: data,
-        inServices: services,
-        inEndPoints: endPoints,
-        inDataStore: dataStore,
-        inConfig,
-        inTableFooter: dom.getTableFooter(containerEl)
-    });
+    if (inShowBody) {
+        buildBody({
+            inVisibleColumnsConfig: visibleColumnsConfig,
+            inTableBody: tableBody,
+            inData: data,
+            inServices: services,
+            inEndPoints: endPoints,
+            inDataStore: dataStore,
+            inConfig,
+            inTableFooter: dom.getTableFooter(containerEl)
+        });
+
+    };
     // debugger;
     if (showFooter) {
         buildFooter({

@@ -35,15 +35,22 @@ const startFunc = ({
     const inShowDelete = options?.table?.body?.showDelete;
     const inDeleteType = options?.table?.body?.deleteType;
     const inDeleteIconSize = options?.table?.body?.deleteIconSize;
+    // console.log("hhhhhhhhhhhhhh :");
+    const firstRow = options?.firstRow;
+    const clearOld = options?.clearOld;
+    const showBody = options?.table?.showBody;
 
+    // debugger
     buildFullUI({
-        containerEl: containerEl,
+        containerEl: containerEl, dom,
         inTableName: inConfig.tableName,
         inIsShowHeaderRow: showSearch,
         inShowSerial: showSerial,
         inSerialWidth: serialWidth,
         inShowActions: showActions, inShowShow,
-        inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize
+        inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize,
+        inFirstRow: options?.firstRow, dataStore,
+        inConfig, inShowBody: showBody, clearOld
     });
 
     tableOnly({
@@ -56,7 +63,7 @@ const startFunc = ({
         columnsConfig,
         uiClasses,
         callbacks,
-        inConfig
+        inConfig, inShowBody: showBody,
     });
 
     if (showDataList) {

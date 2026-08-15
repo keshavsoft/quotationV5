@@ -47,8 +47,10 @@ const clickFuncToRun = async ({ inCurrentTarget }) => {
         };
     }
 
-    ksTable1 = new window.ks.classes.tableShowOnly(config);
+    ksTable1 = new window.ks.classes.compTable(config);
     ksTable1.initShowTable();
+
+
 };
 
 export { clickFuncToRun };

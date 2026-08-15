@@ -1,16 +1,13 @@
-import { buildHeaderRow } from "../builders/buildHeaderRow.js";
 import { buildDataListContainer } from "../builders/buildDataListContainer.js";
-// import { buildTableShell } from "../builders/buildTableShell.js";
-
-// import buildTableShell from "../BuilderVersions/V1/buildTableShell.js";
 import buildTableShell from "../BuilderVersions/V2/buildTableShell.js";
+import buildFirstRow from "./buildFirstRow.js";
+import allColumns from "../builders/buildHeaderRow/allColumns/index.js";
 
 export const buildFullUI = ({ containerEl, inTableName, inIsDataListNeeded = true,
     inIsTableNeeded = true, inIsShowHeaderRow = false,
     inUiClasses, clearOld = true, inShowSerial, inShowActions,
     inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize,
-    inShowShow }) => {
-    // console.log("aaaaaaaaaa : ", inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize);
+    inShowShow, inFirstRow, dataStore, inConfig, dom }) => {
 
     const root = containerEl;
     root.className = "max-w-6xl mx-auto p-2";
@@ -19,12 +16,6 @@ export const buildFullUI = ({ containerEl, inTableName, inIsDataListNeeded = tru
 
     let children = [];
 
-    if (inIsShowHeaderRow) {
-        const { header } = buildHeaderRow({ inTitleText: inTableName });
-
-        children.push(header);
-    };
-
     if (inIsTableNeeded) {
         const { wrapper } = buildTableShell({
             inTableClassName: inUiClasses?.table?.tableClass,
@@ -32,13 +23,33 @@ export const buildFullUI = ({ containerEl, inTableName, inIsDataListNeeded = tru
             inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize
         });
 
-        children.push(wrapper);
+        root.append(wrapper);
+        // children.push(wrapper);
     };
 
     if (inIsDataListNeeded) {
         const { container: dataList } = buildDataListContainer();
-        children.push(dataList);
+        root.append(dataList);
+        // children.push(dataList);
     };
 
-    root.replaceChildren(...children);
+    if (inIsShowHeaderRow) {
+        // debugger;
+        if (inFirstRow?.allColumns) {
+            const fromBuildHeaderRow = allColumns({ inTitleText: inTableName });
+            root.prepend(fromBuildHeaderRow?.header);
+            // return fromBuildHeaderRow;
+        };
+
+        if (inFirstRow?.columnWiseSearch) {
+            buildFirstRow({
+                containerEl: root, dataStore, dom,
+                inTitleText: inTableName,
+                inFirstRow: inFirstRow, inConfig
+            })
+        };
+
+    };
+
+    // root.replaceChildren(...children);
 };
