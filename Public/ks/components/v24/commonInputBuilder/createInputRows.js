@@ -1,7 +1,7 @@
 import { createInputRow } from "./createInputRow.js";
 
 const createInputRows = ({ inColumnsConfig, inDefaultRow, inDataStore, inputs,
-    rowClass
+    rowClass, inCallBacks
 }) => {
 
     const fragment = document.createDocumentFragment();
@@ -14,7 +14,7 @@ const createInputRows = ({ inColumnsConfig, inDefaultRow, inDataStore, inputs,
                 inCol: col,
                 inDefaultRow,
                 inDataStore,
-                inputs: inputs,
+                inputs: inputs, inCallBacks,
                 inEnterAsTab: col?.verticalConfig?.enterAsTab,
                 rowClass: col?.uiClasses?.form?.rowClass || rowClass
             });

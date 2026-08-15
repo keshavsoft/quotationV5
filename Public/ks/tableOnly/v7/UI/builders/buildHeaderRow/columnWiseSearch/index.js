@@ -1,3 +1,6 @@
+import buildBody from "../../../../BuildTableVersions/V6/BuildBodyVersions/V9/start.js";
+// import buildBody from "../BuildTableVersions/V6/BuildBodyVersions/V9/start.js";
+
 const createDiv = (id) => {
     const div = document.createElement("div");
     div.id = id;
@@ -7,16 +10,27 @@ const createDiv = (id) => {
     return div;
 };
 
+const startFunc = ({ inTitleText, dataStore, inConfig,
+    containerEl, dom }) => {
+    const visibleColumnsConfig = dataStore.getVisibleColumnsConfig();
+    const config = { ...inConfig, clearOld: false };
+    const tableBody = dom.getTableBody(containerEl);
 
-const startFunc = ({ inTitleText, dataStore, inConfig }) => {
-    const visibleColumnsConfig = dataStore.getSearchableColumnsConfig();
-    const config = { ...inConfig };
-    config.containerId = "kSHeadContainer";
-    // debugger
+    // console.log("kkkkkkkkkkk : ", visibleColumnsConfig);
+    // console.log("kkkkkkkkkkk---- : ", config?.callbacks?.vertical?.columns);
 
-    // console.log("ssssssss------------ : ", config);
+    config.callbacks.vertical.columns.stockitemname.onClick = (dataToShow) => {
+        // console.log("aaaaaaa------------------------------ : ", dataToShow);
+        buildBody({
+            inVisibleColumnsConfig: visibleColumnsConfig,
+            inTableBody: tableBody, inData: dataToShow,
+        });
+
+        // callbacks
+    };
 
     const k1 = new window.ks.classes.vertical(config);
+
     k1.initCreate();
 
     const div = createDiv("myDiv");

@@ -5,9 +5,32 @@ import createWrapper from "./createWrapper.js";
 import createCheckBox from "./createCheckBox.js";
 import createButton from "./createButton.js";
 
-const addListeners = (inButton, inDataStore) => {
+const addListeners = ({ inButton, inDataStore, inCallBacks }) => {
     inButton.addEventListener("click", () => {
-        console.log("----------inButton---- : ", inButton, inDataStore);
+
+        const data = inDataStore.getData();
+
+        let el = inButton;
+
+        while (el && !el.tagName.includes("-")) {
+            el = el.parentElement;
+        };
+
+        const input = el.querySelector("input");
+        const toFindValue = input.value;
+        const toFindKey = input.name;
+
+        const dataToShow = data.filter(element => {
+            return element[toFindKey] === toFindValue;
+        });
+
+        if (toFindKey in inCallBacks?.vertical?.columns) {
+            inCallBacks?.vertical?.columns[toFindKey]?.onClick(dataToShow);
+        };
+        console.log("------------dataToShow-- : ", dataToShow);
+        console.log("------------toFindKey-- : ", toFindKey);
+        console.log("------------toFindValue-- : ", toFindValue);
+        console.log("------------inCallBacks-- : ", inCallBacks);
 
     })
 };
@@ -42,10 +65,17 @@ class KsInputNoEnter extends KsInput {
         if (this?.verticalConfig?.showButton) {
             const button = createButton({
                 inTextToShow: this?.verticalConfig?.showButton?.textToShow,
-                inClassName: this?.verticalConfig?.showButton?.className
+                inClassName: this?.verticalConfig?.showButton?.className,
+
             });
 
-            addListeners(button, this.options?.inDataStore);
+            // console.log("-------------hhhhhh : ", Object.keys(this?.options));
+            // console.log("-------------hhhhhh : ", this?.options?.inCallBacks);
+
+            addListeners({
+                inButton: button, inDataStore: this.options?.inDataStore,
+                inCallBacks: this?.options?.inCallBacks
+            });
             wrapper.append(button);
         };
 

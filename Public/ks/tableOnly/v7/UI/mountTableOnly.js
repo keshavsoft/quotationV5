@@ -28,12 +28,13 @@ const startFunc = ({
     const inDeleteType = options?.table?.body?.deleteType;
     const inDeleteIconSize = options?.table?.body?.deleteIconSize;
     const firstRow = options?.firstRow;
+    const clearOld = options?.clearOld;
 
     const dataListColumns = dataStore.getDataListColumns();
 
     // debugger;
     buildFullUI({
-        containerEl: containerEl,
+        containerEl: containerEl, dom,
         inTableName: inConfig.tableName,
         inIsShowHeaderRow: showSearch,
         inShowSerial: showSerial,
@@ -41,7 +42,7 @@ const startFunc = ({
         inShowActions: showActions, inShowShow,
         inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize,
         inFirstRow: options?.firstRow, dataStore,
-        inConfig, inShowBody: false
+        inConfig, inShowBody: false, clearOld
     });
 
     tableCodeOnly({

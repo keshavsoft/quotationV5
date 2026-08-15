@@ -6,7 +6,7 @@ export const buildFullUI = ({ containerEl, inTableName, inIsDataListNeeded = tru
     inIsTableNeeded = true, inIsShowHeaderRow = false,
     inUiClasses, clearOld = true, inShowSerial, inShowActions,
     inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize,
-    inShowShow, inFirstRow, dataStore, inConfig }) => {
+    inShowShow, inFirstRow, dataStore, inConfig, dom }) => {
 
     const root = containerEl;
     root.className = "max-w-6xl mx-auto p-2";
@@ -15,19 +15,6 @@ export const buildFullUI = ({ containerEl, inTableName, inIsDataListNeeded = tru
 
     let children = [];
 
-    if (inIsShowHeaderRow) {
-        // debugger
-        const fromBuildFirstRow = buildFirstRow({
-            containerEl: root, dataStore,
-            inTitleText: inTableName,
-            inFirstRow: inFirstRow, inConfig
-        })
-        // const { header } = buildHeaderRow({ inTitleText: inTableName });
-        if (fromBuildFirstRow?.header) {
-            children.push(fromBuildFirstRow?.header);
-        };
-    };
-
     if (inIsTableNeeded) {
         const { wrapper } = buildTableShell({
             inTableClassName: inUiClasses?.table?.tableClass,
@@ -35,13 +22,30 @@ export const buildFullUI = ({ containerEl, inTableName, inIsDataListNeeded = tru
             inShowEdit, inShowDelete, inDeleteType, inDeleteIconSize
         });
 
-        children.push(wrapper);
+        root.append(wrapper);
+        // children.push(wrapper);
     };
 
     if (inIsDataListNeeded) {
         const { container: dataList } = buildDataListContainer();
-        children.push(dataList);
+        root.append(dataList);
+        // children.push(dataList);
     };
 
-    root.replaceChildren(...children);
+    if (inIsShowHeaderRow) {
+        // debugger
+        const fromBuildFirstRow = buildFirstRow({
+            containerEl: root, dataStore, dom,
+            inTitleText: inTableName,
+            inFirstRow: inFirstRow, inConfig
+        })
+        // const { header } = buildHeaderRow({ inTitleText: inTableName });
+        if (fromBuildFirstRow?.header) {
+
+            root.prepend(fromBuildFirstRow);
+            // children.push(fromBuildFirstRow?.header);
+        };
+    };
+
+    // root.replaceChildren(...children);
 };

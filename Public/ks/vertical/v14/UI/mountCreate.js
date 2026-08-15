@@ -25,13 +25,15 @@ const startFunc = ({
     const isFormDisabled = options.vertical.isFormDisabled;
     const showSaveButton = options.vertical.showSaveButton;
     const verticalOptions = options.vertical;
-
+    const clearOld = inConfig?.clearOld;
+//     console.log("vvvvvvvvvvvvv : ", clearOld);
+// debugger;
     buildFullUI({
         containerEl: containerEl,
         inTableName: inConfig.tableName,
         inIsShowHeaderRow: showSearch,
         inIsTableNeeded: false,
-        inIsShowHeaderRow: false
+        inIsShowHeaderRow: false, clearOld
     });
 
     if (true) {

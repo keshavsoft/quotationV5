@@ -8,8 +8,9 @@ const returnDefault = ({ inCol, inDefaultRow }) => {
 };
 
 export const createDefaultInput = ({ inCol, inDefaultRow, inDataStore,
-    inDataListFillName, inType, inEnterAsTab, rowClass, dataListSource }) => {
-    // console.log("pppppppppp : ", inCol);
+    inDataListFillName, inType, inEnterAsTab, rowClass, dataListSource,
+    inCallBacks }) => {
+    console.log("pppppppppp : ", inCallBacks);
 
     const col = inCol.columnName;
     const row = document.createElement("ks-input-no-enter");
@@ -51,6 +52,7 @@ export const createDefaultInput = ({ inCol, inDefaultRow, inDataStore,
     };
 
     row.dataStore = inDataStore;
+    row.inCallBacks = inCallBacks;
 
     row.verticalConfig = inCol?.verticalConfig;
     // inputs[col] = row;

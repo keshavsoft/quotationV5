@@ -42,7 +42,7 @@ const getBoolAttr = (el, names) => {
 };
 
 const getInputOptions = ({ inElement }) => {
-    // console.log("verticalConfig------- : ", inElement.verticalConfig);
+    // console.log("---inCallBacks------- : ", inElement?.inCallBacks);
 
     const localName =
         inElement.ksName ||
@@ -112,7 +112,7 @@ const getInputOptions = ({ inElement }) => {
     const dataListSource =
         getAttr(inElement, ["ksDataListSource", "ks-data-list-source", "data-list-source"]) ||
         defaultOptions.inDataListSource;
-// console.log("dataListSource : ", dataListSource);
+    // console.log("dataListSource : ", dataListSource);
 
     const dataListFillName =
         getAttr(inElement, ["ksDataListFillName", "ks-data-list-fill-name", "data-list-fill-name"]) ||
@@ -152,9 +152,10 @@ const getInputOptions = ({ inElement }) => {
     const tabIndex = getAttr(inElement, ["tabIndex"]) ||
         defaultOptions.ksTabIndex;
 
-    const verticalConfig = defaultOptions.verticalConfig;
+    const verticalConfig = inElement?.verticalConfig;
+    const inCallBacks = inElement?.inCallBacks;
 
-    //  console.log("verticalConfig------- : ", inElement.verticalConfig);
+    // console.log("inCallBacks------- : ", inElement?.verticalConfig, inCallBacks);
 
     return {
         inPlaceholder: placeholder,
@@ -180,7 +181,7 @@ const getInputOptions = ({ inElement }) => {
         value,
         isNotEmpty,
         tabIndex,
-        verticalConfig
+        verticalConfig, inCallBacks
     };
 };
 

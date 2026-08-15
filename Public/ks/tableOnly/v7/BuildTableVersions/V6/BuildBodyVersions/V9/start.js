@@ -19,8 +19,8 @@ const buildBody = ({ inVisibleColumnsConfig, inTableBody, inData,
     tableBody.innerHTML = '';
 
     const handlers = initHandlers({
-        inShowCallBack: callbacks.table.body.show,
-        inEditCallBack: callbacks.table.body.edit
+        inShowCallBack: callbacks?.table.body.show,
+        inEditCallBack: callbacks?.table.body.edit
     });
 
     // debugger;

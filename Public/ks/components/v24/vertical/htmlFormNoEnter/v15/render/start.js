@@ -13,6 +13,7 @@ const localIsFormDisabled = ({ isModeDefined, isEdit, isCreate, inIsDisabled }) 
 };
 
 const renderForm = ({ element, options }) => {
+
     const {
         inDefaultRow = {},
         uiClasses = {},
@@ -20,7 +21,7 @@ const renderForm = ({ element, options }) => {
         inServices,
         inConfig,
         inColumnsConfig = [],
-        inDataStore,
+        inDataStore, inCallBacks,
         inVerticalOptions
     } = options;
 
@@ -45,7 +46,7 @@ const renderForm = ({ element, options }) => {
     const inputsFragment = createInputRows({
         inColumnsConfig,
         inDefaultRow,
-        inDataStore,
+        inDataStore, inCallBacks,
         rowClass: uiClasses?.form?.column?.rowClass
     });
 

@@ -2,7 +2,7 @@ import { createDataListInput } from "./createDataListInput.js";
 import { createDefaultInput } from "./createDefaultInput.js";
 
 export const createInputRow = ({ inCol, inDefaultRow, inDataStore, inEnterAsTab,
-    rowClass
+    rowClass, inCallBacks
 }) => {
 
     const dataListFillName = inCol.dataListFillName;
@@ -28,7 +28,7 @@ export const createInputRow = ({ inCol, inDefaultRow, inDataStore, inEnterAsTab,
                 inDataStore, inEnterAsTab,
                 inDataListFillName: dataListFillName,
                 inType: "type" in inCol ? inCol.type : "",
-                rowClass, dataListSource
+                rowClass, dataListSource, inCallBacks
             });
 
         } else {

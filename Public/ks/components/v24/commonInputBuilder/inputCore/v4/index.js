@@ -25,6 +25,9 @@ class KsTableFooterInputCore extends HTMLElement {
             });
 
         this.localOptions = localOptions;
+        // console.log(
+        //     "ooooooooooo : ", this.localOptions.verticalConfig, this.localOptions.inCallBacks
+        // );
 
         applyParentCellStyle({
             inElement: this,
