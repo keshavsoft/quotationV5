@@ -5,12 +5,10 @@ import createWrapper from "./createWrapper.js";
 import createCheckBox from "./createCheckBox.js";
 import createButton from "./createButton.js";
 
-const addListeners = ({ inButton, inDataStore, inCallBacks }) => {
-    inButton.addEventListener("click", () => {
-
-        const data = inDataStore.getData();
-
-        let el = inButton;
+const addListeners = ({ inButton, inCallBacks }) => {
+    inButton.addEventListener("click", (event) => {
+        const currentTarget = event.currentTarget;
+        let el = currentTarget;
 
         while (el && !el.tagName.includes("-")) {
             el = el.parentElement;
@@ -20,18 +18,12 @@ const addListeners = ({ inButton, inDataStore, inCallBacks }) => {
         const toFindValue = input.value;
         const toFindKey = input.name;
 
-        const dataToShow = data.filter(element => {
-            return element[toFindKey] === toFindValue;
-        });
-
         if (toFindKey in inCallBacks?.vertical?.columns) {
-            inCallBacks?.vertical?.columns[toFindKey]?.onClick(dataToShow);
+            inCallBacks?.vertical?.columns[toFindKey]?.onClick({
+                filterKey: toFindKey,
+                filterValue: toFindValue
+            });
         };
-        console.log("------------dataToShow-- : ", dataToShow);
-        console.log("------------toFindKey-- : ", toFindKey);
-        console.log("------------toFindValue-- : ", toFindValue);
-        console.log("------------inCallBacks-- : ", inCallBacks);
-
     })
 };
 
@@ -41,8 +33,6 @@ class KsInputNoEnter extends KsInput {
     }
 
     renderInput({ inInput }) {
-        // console.log("----------verticalConfig-- : ", this.options?.inDataStore);
-
         const inLabel = this.getAttribute("label");
         const inLabelClass = this.getAttribute("ksLabelClass");
         const inRowClass = this.getAttribute("ksRowClass");
@@ -68,9 +58,6 @@ class KsInputNoEnter extends KsInput {
                 inClassName: this?.verticalConfig?.showButton?.className,
 
             });
-
-            // console.log("-------------hhhhhh : ", Object.keys(this?.options));
-            // console.log("-------------hhhhhh : ", this?.options?.inCallBacks);
 
             addListeners({
                 inButton: button, inDataStore: this.options?.inDataStore,

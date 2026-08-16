@@ -36,10 +36,7 @@ class KSAiVertical {
         this.dom = getDomManipulation();
 
         this.uiState.setTableContainerId(containerId);
-        // this.uiClasses = mergeUIClasses(KSAiVertical.defaults.classes, uiClasses);
         this.uiClasses = uiClasses;
-
-        // console.log("uiClasses------- : ", uiClasses, this.uiClasses);
 
         configureDataStore({
             dataStore: this.dataStore,
@@ -59,15 +56,17 @@ class KSAiVertical {
         });
     }
 
-    async initCreate() {
+    async initCreate(inLoadDataFlow = true) {
         this.setupServices();
 
-        await loadDataFlow({
-            config: this.config,
-            services: this.services,
-            dataStore: this.dataStore,
-            endPoints: this.endPoints
-        });
+        if (inLoadDataFlow) {
+            await loadDataFlow({
+                config: this.config,
+                services: this.services,
+                dataStore: this.dataStore,
+                endPoints: this.endPoints
+            });
+        };
 
         mountCreate({
             containerEl: this.containerEl,
