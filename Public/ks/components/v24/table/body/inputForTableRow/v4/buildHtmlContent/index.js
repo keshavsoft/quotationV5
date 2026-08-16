@@ -1,6 +1,6 @@
 import { forSearchValue } from "./forSearchValue.js";
 import { forNumberSeperator } from "./forNumberSeperator.js";
-import { forArray } from "./forArray.js";
+import { forArray } from "./forArray/index.js";
 
 export const buildHtmlContent = ({ value, searchValue, showThousandsSeperator }) => {
     if (searchValue !== undefined) {
