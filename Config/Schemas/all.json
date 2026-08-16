@@ -1,0 +1,221 @@
+    {
+      "tableName": "all",
+      "columns": [
+        {
+          "field": "StockItemName",
+          "title": "StockItemName",
+          "unique": true,
+          "type": "text",
+          "isInput": true,
+          "isAutoFocus": true,
+          "defaultvalue": "KeshavSoft",
+          "isConsider": true
+        },
+        {
+          "field": "StockItemReservedName",
+          "title": "StockItemReservedName",
+          "type": "text",
+          "isInput": true,
+          "isConsider": true
+        },
+        {
+          "field": "StockItemType",
+          "title": "StockItemType",
+          "type": "text",
+          "isInput": true,
+          "isConsider": true
+        },
+        {
+          "field": "pk",
+          "title": "pk",
+          "primary": true
+        },
+        {
+          "field": "StockParentName",
+          "title": "StockParentName",
+          "isConsider": true
+        },
+        {
+          "field": "StockCategory",
+          "title": "StockCategory",
+          "isConsider": true
+        },
+        {
+          "field": "StockGstApplicable",
+          "title": "StockGstApplicable",
+          "isConsider": true
+        },
+        {
+          "field": "StockGstTypeOfSupply",
+          "title": "StockGstTypeOfSupply",
+          "isConsider": true
+        },
+        {
+          "field": "StockBaseUnits",
+          "title": "StockBaseUnits",
+          "isConsider": true
+        },
+        {
+          "field": "sgstRate",
+          "title": "sgstRate",
+          "isConsider": true
+        },
+        {
+          "field": "cgstRate",
+          "title": "cgstRate",
+          "isConsider": true
+        }
+      ],
+      "data": [],
+      "Vertical": [],
+      "DataTableOptions": {
+        "Header": {
+          "autoFocus": "StockItemName"
+        }
+      },
+      "NonSecured": {
+        "SubRoutes": [
+          "ShowAll",
+          "Pipe",
+          "Insert"
+        ]
+      },
+      "PrimarykeyTableNames": [],
+      "PrimarykeyTables": [],
+      "callbacks": {
+        "table": {
+          "onDelete": "function",
+          "onReadFail": "function"
+        }
+      },
+      "columnsConfig": [
+        {
+          "columnName": "type",
+          "title": "type",
+          "field": "type",
+          "cellConfig": {
+            "width": "150px",
+            "tdClass": "px-4 py-2 border"
+          },
+          "dataListSource": "",
+          "tableFooterDataListShow": true,
+          "uiClasses": {
+            "form": {
+              "rowClass": "flex items-center space-x-4"
+            }
+          },
+          "allowOnChange": true,
+          "onChangeType": "onDataListChange",
+          "isConsider": true,
+          "tableConfig": {
+            "footerConfig": {
+              "enterAsTab": true,
+              "isNotEmpty": true
+            }
+          }
+        },
+        {
+          "columnName": "vchtype",
+          "field": "vchtype",
+          "title": "vchtype",
+          "primary": true,
+          "isVisible": true,
+          "cellConfig": {
+            "width": "150px"
+          },
+          "uiClasses": {
+            "form": {
+              "rowClass": "flex items-center space-x-4 w-1/2",
+              "labelClass": "w-36 text-sm font-medium"
+            }
+          },
+          "isSearchable": false,
+          "verticalConfig": {
+            "enterAsTab": false,
+            "allowOnChange": false,
+            "onKeyDown": false,
+            "onKeyDownType": "onDataListChange",
+            "type": "",
+            "tabIndex": "-1"
+          },
+          "isConsider": true
+        },
+        {
+          "columnName": "date",
+          "field": "date",
+          "title": "date",
+          "primary": true,
+          "isVisible": true,
+          "cellConfig": {
+            "width": "100px"
+          },
+          "uiClasses": {
+            "form": {
+              "rowClass": "flex items-center space-x-4 w-1/2",
+              "labelClass": "w-36 text-sm font-medium"
+            }
+          },
+          "isSearchable": false,
+          "verticalConfig": {
+            "enterAsTab": false,
+            "allowOnChange": false,
+            "onKeyDown": false,
+            "onKeyDownType": "onDataListChange",
+            "type": "",
+            "tabIndex": "-1"
+          },
+          "isConsider": true
+        },
+        {
+          "columnName": "vouchernumber",
+          "title": "vouchernumber",
+          "field": "vouchernumber",
+          "cellConfig": {
+            "width": "150px",
+            "rightAlign": true,
+            "showThousandsSeperator": false,
+            "tableFooter": {
+              "showTotal": false
+            }
+          },
+          "uiClasses": {
+            "form": {
+              "rowClass": "flex items-center space-x-4 w-1/2"
+            }
+          },
+          "isConsider": true,
+          "tableConfig": {
+            "footerConfig": {
+              "enterAsTab": false,
+              "isNotEmpty": false
+            }
+          }
+        },
+        {
+          "columnName": "allinventoryentries",
+          "title": "allinventoryentries",
+          "field": "allinventoryentries",
+          "cellConfig": {
+            "width": "150px",
+            "rightAlign": true,
+            "showThousandsSeperator": true,
+            "tableFooter": {
+              "showTotal": true
+            }
+          },
+          "uiClasses": {
+            "form": {
+              "rowClass": "flex items-center space-x-4 w-1/2",
+              "labelClass": "w-36 text-sm font-medium"
+            }
+          },
+          "isDate": true,
+          "defaultToday": true,
+          "isReadonly": false,
+          "autoFocus": false,
+          "isSearch": false,
+          "type": "date",
+          "isConsider": true
+        }
+      ]
+    }

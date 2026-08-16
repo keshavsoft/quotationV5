@@ -23,7 +23,7 @@ class KsHtmlFormNoEnter extends HTMLElement {
     }
 
     init(options) {
-        console.log("----------iiiiiiiiikkkkkkkkkkk---- : ", options);
+        // console.log("----------iiiiiiiiikkkkkkkkkkk---- : ", options);
 
         const layoutType = options?.layoutType || options?.inVerticalOptions?.layoutType;
         const layoutPreset = layouts[layoutType] || layouts.inputsInline;

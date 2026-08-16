@@ -18,7 +18,7 @@ class KsTableBodyCell extends HTMLElement {
                 closestTd.classList.add("text-right");
             };
         };
-
+        // console.log("searchValue : ", searchValue);
         if (searchValue === undefined) {
             if (showThousandsSeperator) {
                 this.innerHTML = Number(value).toLocaleString("en-IN", {
@@ -26,7 +26,14 @@ class KsTableBodyCell extends HTMLElement {
                     maximumFractionDigits: 2
                 });
             } else {
-                this.innerHTML = value;
+                const ifValueIsArray = Array.isArray(value);
+                if (ifValueIsArray) {
+                    this.innerHTML = `<button type="button" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 rounded text-xs shadow-sm">
+                        View (${value.length})
+                    </button>`;
+                } else {
+                    this.innerHTML = value;
+                };
             };
         } else {
             this.innerHTML = highlight({

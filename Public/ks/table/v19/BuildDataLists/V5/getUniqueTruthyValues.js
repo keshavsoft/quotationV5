@@ -11,20 +11,20 @@ const getUniqueTruthyValues = data => {
 
     // console.log(result);
 
-    const result1 = Object.values(
-        data.reduce((acc, item) => {
-            const key = item.date;
+    // const result1 = Object.values(
+    //     data.reduce((acc, item) => {
+    //         const key = item.date;
 
-            acc[key] ??= {
-                value: key,
-                count: 0
-            };
+    //         acc[key] ??= {
+    //             value: key,
+    //             count: 0
+    //         };
 
-            acc[key].count++;
+    //         acc[key].count++;
 
-            return acc;
-        }, {})
-    );
+    //         return acc;
+    //     }, {})
+    // );
 
     return result;
 };
