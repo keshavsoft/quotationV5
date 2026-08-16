@@ -1,5 +1,5 @@
 import { applyStylesToParentCell } from "./applyStylesToParentCell.js";
-import { buildHtmlContent } from "./buildHtmlContent.js";
+import { buildHtmlContent } from "./buildHtmlContent/index.js";
 
 class KsTableBodyCell extends HTMLElement {
     connectedCallback() {
@@ -13,7 +13,14 @@ class KsTableBodyCell extends HTMLElement {
 
         applyStylesToParentCell({ closestTd, width, rightAlign });
 
-        this.innerHTML = buildHtmlContent({ value, searchValue, showThousandsSeperator });
+        const content = buildHtmlContent({ value, searchValue, showThousandsSeperator });
+        
+        if (content instanceof HTMLElement) {
+            this.innerHTML = "";
+            this.appendChild(content);
+        } else {
+            this.innerHTML = content;
+        }
     }
 }
 
