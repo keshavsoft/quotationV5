@@ -1,4 +1,5 @@
 import buildBody from "../../../../BuildTableVersions/V6/BuildBodyVersions/V9/start.js";
+import updateFooter from "../../../../BuildTableVersions/V5/AfterMutation/V5/UpdateFooter/V2/start.js";
 
 const prepareConfig = ({ dataStore, inConfig,
     containerEl, dom }) => {
@@ -6,23 +7,34 @@ const prepareConfig = ({ dataStore, inConfig,
     const visibleColumnsConfig = dataStore.getVisibleColumnsConfig();
     const config = { ...inConfig, clearOld: false };
     const tableBody = dom.getTableBody(containerEl);
+    const tableFooter = dom.getTableFooter(containerEl);
 
     const data = dataStore.getData();
 
     for (const key in config?.callbacks?.vertical?.columns) {
         config.callbacks.vertical.columns[key].onClick = ({ filterKey, filterValue }) => {
-            // console.log("filterKey : ", filterKey);
-            // console.log("filterValue : ", filterValue);
 
             const dataToShow = data.filter(element => {
                 return element[filterKey] === filterValue;
             });
 
-            // console.log("dataToShow : ", dataToShow);
             buildBody({
                 inVisibleColumnsConfig: visibleColumnsConfig,
                 inTableBody: tableBody, inData: dataToShow,
             });
+            // debugger
+            updateFooter({
+                inVisibleColumnsConfig: visibleColumnsConfig,
+                inTableFooter: tableFooter, inData: dataToShow,
+                inShowFooterRows: true,
+                inShowTotals: true
+            });
+
+            //   inTableFooter,
+            // inData: dataToShow,
+            // inShowFooterRows: true,
+            // inShowTotals: true
+
         };
     };
 

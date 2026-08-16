@@ -2,7 +2,7 @@ import { buildFullUI } from "./compose/buildFullUI.js";
 
 import searchFuncs from "../SearchFuncs/V5/index.js";
 import setFocus from "../SetFocus/V4/index.js";
-import buildDataLists from "../BuildDataLists/V4/addToDom.js";
+import buildDataLists from "../BuildDataLists/V5/addToDom.js";
 
 import tableOnly from "./tableOnly.js";
 
