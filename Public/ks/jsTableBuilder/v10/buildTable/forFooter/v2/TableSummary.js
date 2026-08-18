@@ -1,4 +1,4 @@
-import { buildSummaryRow } from "./SummaryRow.js";
+import { buildSummaryRow } from "./SummaryRow/index.js";
 
 const startFunc = ({ inData, inColumns, inClasses = {}, inFootOptions = {} }) => {
     const localData = inData;
