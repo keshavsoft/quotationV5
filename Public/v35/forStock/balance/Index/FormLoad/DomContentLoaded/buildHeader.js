@@ -1,7 +1,7 @@
 import headerConfig from "./headers.json" with { type: "json" };
 
 const buildHeader = async () => {
-    await window.KSHeader(headerConfig);
+    await window.ks.components.header(headerConfig);
 };
 
 export { buildHeader };
