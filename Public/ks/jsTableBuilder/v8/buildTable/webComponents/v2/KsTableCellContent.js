@@ -2,7 +2,7 @@ import { renderButtonControl } from "./cellRenderers/renderButtonControl.js";
 import { renderAnchorControl } from "./cellRenderers/renderAnchorControl.js";
 import { renderArrayView } from "./cellRenderers/renderArrayView.js";
 import { renderDefault } from "./cellRenderers/renderDefault.js";
-const showLog = true;
+const showLog = false;
 
 class KsTableCellContent extends HTMLElement {
     constructor() {
@@ -34,12 +34,10 @@ class KsTableCellContent extends HTMLElement {
                 renderAnchorControl(this.shadowRoot, tdConfig, rowData, val);
                 return;
             }
-        }
+        };
 
         // 2. Check for Array Data
         if (Array.isArray(val)) {
-            console.log("showLog : ", val);
-
             renderArrayView(this.shadowRoot, val);
             return;
         };

@@ -4,7 +4,7 @@ const DEFAULT_OPTIONS = {
     vAlign: ""
 };
 
-import "../../webComponents/v1/KsTableCellContent.js";
+import "../../webComponents/v2/KsTableCellContent.js";
 import applyCellOptions from "../../utils/style/applyCellOptions.js";
 
 function buildTableCell({
