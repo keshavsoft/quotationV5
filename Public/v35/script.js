@@ -1,26 +1,10 @@
 function loadScriptAsModuleCommon(src) {
-    return new Promise((resolve, reject) => {
-        // Pre-verify the resource exists and is valid JavaScript
-        fetch(src, { method: 'GET' })
-            .then(response => {
-                const contentType = response.headers.get('content-type') || '';
-                if (!response.ok || contentType.includes('text/html')) {
-                    throw new Error(`Invalid response or MIME type for: ${src}`);
-                }
-
-                // If valid, append the script tag normally
-                const script = document.createElement("script");
-                script.src = src;
-                script.onload = () => resolve(true);
-                script.onerror = () => reject(new Error(`Failed to load: ${src}`));
-                script.type = "module";
-                document.head.appendChild(script);
-            })
-            .catch(err => {
-                // Reject immediately so the fallback url is triggered
-                reject(err);
-            });
-    });
+    return import(src)
+        .then(() => true)
+        .catch(err => {
+            console.error(`Error loading module ${src}:`, err);
+            throw err;
+        });
 };
 
 function loadScriptAsModuleCommon1(src) {
@@ -66,7 +50,8 @@ async function loadResource({ name, isLoaded, sources }) {
 
             if (window.ksShowLog) console.log(`${name} loaded from ${source.label} : ${source.url}`);
             return;
-        } catch {
+        } catch (err) {
+            console.error(`${name} failed to load from ${source.label} : ${source.url}`, err);
             if (window.ksShowLog) console.log(`${name} -failed- from ${source.label} : ${source.url}`);
         }
     }
