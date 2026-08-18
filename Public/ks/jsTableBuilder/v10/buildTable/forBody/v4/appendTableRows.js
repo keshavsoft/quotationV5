@@ -1,16 +1,16 @@
-import { buildTableRow } from "./TableRow.js";
+import { buildTableRow } from "./TableRow/index.js";
 
-export function appendTableRows({ 
-    inBodyWrapperElement, 
-    inData, 
-    inColumns, 
-    inClasses, 
-    inBodyOptions 
+export function appendTableRows({
+    inBodyWrapperElement,
+    inData,
+    inColumns,
+    inClasses,
+    inBodyOptions
 }) {
     inData.forEach(itemData => {
-        const rowElement = buildTableRow({ 
-            inItem: itemData, 
-            inColumns: inColumns, 
+        const rowElement = buildTableRow({
+            inItem: itemData,
+            inColumns: inColumns,
             inClasses: inClasses,
             inBodyOptions: inBodyOptions
         });
