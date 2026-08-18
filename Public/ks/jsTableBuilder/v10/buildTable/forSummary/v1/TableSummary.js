@@ -1,6 +1,6 @@
 import { buildSummaryRow } from "./SummaryRow.js";
 
-function buildTableSummary({ inData, inColumns, inClasses = {}, inFootOptions = {} }) {
+const startFunc = ({ inData, inColumns, inClasses = {}, inFootOptions = {} }) => {
     const localData = inData;
     const localColumns = inColumns;
     const localClasses = inClasses;
@@ -17,10 +17,10 @@ function buildTableSummary({ inData, inColumns, inClasses = {}, inFootOptions = 
         inClasses: localClasses,
         inFootOptions: localFootOptions
     });
-    
+
     tfootElement.appendChild(summaryRow);
 
     return tfootElement;
-}
+};
 
-export { buildTableSummary };
+export default startFunc;

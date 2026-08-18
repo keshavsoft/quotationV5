@@ -10,6 +10,7 @@ import { mergeClasses } from "./buildTable/utils/config/mergeClasses.js";
 import { appendToDom } from "./buildTable/utils/dom/appendToDom.js";
 import { setupColumnsAndData } from "./buildTable/utils/dataFuncs/setupDataStore.js";
 import prepareData from "./buildTable/utils/dataFuncs/prepareData.js";
+import "./webComponents/v1/KsTableCellContent.js";
 
 class TableBuilder {
     constructor({
@@ -58,17 +59,13 @@ class TableBuilder {
     }
 
     async appendToDom() {
-        // debugger
         this.dataStore.originalData = await this.services.read();
 
         this.dataStore.data = prepareData({
             inData: this.dataStore.originalData,
             inShowSerialNo: this.tableOptions?.inCommonOptions?.inShowSerialNo
         });
-        // this.dataStore.data = prepareData({
-        //     inData: this.dataStore.originalData,
-        //     inShowSerialNo: this.tableOptions?.inCommonOptions?.inShowSerialNo
-        // });
+
         appendToDom(this);
     }
 

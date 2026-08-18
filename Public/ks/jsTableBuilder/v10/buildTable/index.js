@@ -2,15 +2,15 @@ import { buildTableHeader } from "./forHead/TableHeader.js";
 import { buildTableBody } from "./forBody/index.js";
 import { buildEmptyState } from "./buildEmptyState.js";
 import { buildTableElement } from "./buildTableElement.js";
-import { buildTableSummary } from "./forSummary/TableSummary.js";
+import { buildTableSummary } from "./forSummary/index.js";
 
-function buildTable({ 
-    inData, 
-    inColumns, 
-    inClasses = {}, 
+function buildTable({
+    inData,
+    inColumns,
+    inClasses = {},
     inTableOptions = {},
     inSortState = [],
-    inOnSort = () => {}
+    inOnSort = () => { }
 }) {
     const localData = inData;
     const localColumns = inColumns;
@@ -27,7 +27,7 @@ function buildTable({
         return buildEmptyState({ inClasses: localClasses });
     }
 
-    const tableElement = buildTableElement({ 
+    const tableElement = buildTableElement({
         inClasses: localClasses,
         inCommonOptions: localCommonOptions
     });
