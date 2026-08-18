@@ -2,6 +2,7 @@ import { renderButtonControl } from "./cellRenderers/renderButtonControl.js";
 import { renderAnchorControl } from "./cellRenderers/renderAnchorControl.js";
 import { renderArrayView } from "./cellRenderers/renderArrayView.js";
 import { renderDefault } from "./cellRenderers/renderDefault.js";
+const showLog = true;
 
 class KsTableCellContent extends HTMLElement {
     constructor() {
@@ -19,7 +20,7 @@ class KsTableCellContent extends HTMLElement {
         let val = this._inputs.cellValue;
         let rowData = this._inputs.rowData;
         const options = this._inputs.options || {};
-        
+
         // Clear previous content
         this.shadowRoot.innerHTML = '';
 
@@ -37,9 +38,11 @@ class KsTableCellContent extends HTMLElement {
 
         // 2. Check for Array Data
         if (Array.isArray(val)) {
+            console.log("showLog : ", val);
+
             renderArrayView(this.shadowRoot, val);
             return;
-        }
+        };
 
         // 3. Fallback to default text rendering
         renderDefault(this.shadowRoot, val);

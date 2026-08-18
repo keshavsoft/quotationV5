@@ -58,7 +58,7 @@ class TableBuilder {
     }
 
     async appendToDom() {
-        debugger
+        // debugger
         this.dataStore.originalData = await this.services.read();
 
         this.dataStore.data = prepareData({

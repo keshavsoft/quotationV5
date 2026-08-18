@@ -87,7 +87,7 @@
         }
     },
     "endPoints": {
-        "read": "/api/v2/purchases/getBatchArray"
+        "read": "/api/v3/purchases/showAll"
     },
     "columnsConfig": [
         {
@@ -450,6 +450,42 @@
         {
             "header": "vouchernumber",
             "dataKey": "vouchernumber",
+            "options": {
+                "width": "150px",
+                "sortable": true,
+                "summaryLabel": "Total:"
+            }
+        },
+        {
+            "header": "date",
+            "dataKey": "date",
+            "options": {
+                "width": "150px",
+                "sortable": true,
+                "summaryLabel": "Total:"
+            }
+        },
+        {
+            "header": "vchtype",
+            "dataKey": "vchtype",
+            "options": {
+                "width": "150px",
+                "sortable": true,
+                "summaryLabel": "Total:"
+            }
+        },
+        {
+            "header": "type",
+            "dataKey": "type",
+            "options": {
+                "width": "150px",
+                "sortable": true,
+                "summaryLabel": "Total:"
+            }
+        },
+        {
+            "header": "allledgerentries",
+            "dataKey": "allledgerentries",
             "options": {
                 "width": "150px",
                 "sortable": true,
