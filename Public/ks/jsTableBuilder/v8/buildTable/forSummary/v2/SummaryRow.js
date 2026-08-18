@@ -1,5 +1,6 @@
-import applyCellOptions from "../utils/style/applyCellOptions.js";
-import "../forBody/v1/KsTableCellContent.js";
+import applyCellOptions from "../../utils/style/applyCellOptions.js";
+import "../../webComponents/v1/KsTableCellContent.js";
+const showLog = true;
 
 function buildSummaryRow({ inData, inColumns, inClasses = {}, inFootOptions = {} }) {
     const localData = inData;
@@ -9,7 +10,7 @@ function buildSummaryRow({ inData, inColumns, inClasses = {}, inFootOptions = {}
 
     const trElement = document.createElement("tr");
     if (localClasses.tr) trElement.className = localClasses.tr;
-    
+
     // Give the summary row a distinct background
     trElement.style.backgroundColor = "#f9fafb";
     trElement.style.borderTop = "2px solid #e5e7eb";
@@ -24,7 +25,7 @@ function buildSummaryRow({ inData, inColumns, inClasses = {}, inFootOptions = {}
         }
 
         let summaryValue = "";
-        
+
         if (col.options) {
             if (col.options.summaryLabel) {
                 summaryValue = col.options.summaryLabel;
@@ -34,7 +35,7 @@ function buildSummaryRow({ inData, inColumns, inClasses = {}, inFootOptions = {}
                     const val = parseFloat(row[col.dataKey]);
                     return sum + (isNaN(val) ? 0 : val);
                 }, 0);
-                
+
                 // Keep it clean with up to 2 decimal places if needed
                 summaryValue = Number.isInteger(total) ? total.toString() : total.toFixed(2);
             } else if (col.options.summary === "count") {
@@ -54,7 +55,11 @@ function buildSummaryRow({ inData, inColumns, inClasses = {}, inFootOptions = {}
             cellContent.inputs = { cellValue: summaryValue };
         } else {
             cellContent.inputs = { cellValue: "" };
-        }
+        };
+
+        if (showLog) {
+            console.log("cellContent", summaryValue, cellContent);
+        };
 
         tdElement.appendChild(cellContent);
         trElement.appendChild(tdElement);
