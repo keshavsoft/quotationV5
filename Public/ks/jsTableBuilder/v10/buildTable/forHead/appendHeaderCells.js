@@ -1,14 +1,17 @@
 import buildHeaderCell from "./HeaderCell.js";
+const showLog = true;
 
-export function appendHeaderCells({ 
-    inHeaderRowElement, 
-    inColumns, 
-    inClasses = {}, 
-    inSortState = [], 
-    inOnSort = () => {} 
+export function appendHeaderCells({
+    inHeaderRowElement,
+    inColumns,
+    inClasses = {},
+    inSortState = [],
+    inOnSort = () => { }
 }) {
     inColumns.forEach(columnData => {
-        const headerCellElement = buildHeaderCell({ 
+        if (showLog) console.log("appendHeaderCells -> columnData", columnData);
+
+        const headerCellElement = buildHeaderCell({
             inHeader: columnData.header,
             inDataKey: columnData.dataKey,
             inOptions: columnData.options || {},
