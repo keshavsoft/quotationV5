@@ -448,7 +448,7 @@
     },
     "columns": [
         {
-            "header": "vouchernumber",
+            "header": "Voucher Number",
             "dataKey": "vouchernumber",
             "options": {
                 "width": "150px",

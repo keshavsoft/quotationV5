@@ -21,9 +21,9 @@ function loadCss(href) {
     });
 };
 
-async function loadResource({ name, isLoaded, sources }) {
+async function loadResource({ name, isLoaded, sources, showLog = true }) {
     if (isLoaded && isLoaded()) {
-        if (window.ksShowLog) console.log(`${name} loaded from Firefox Extension`);
+        if (window.ksShowLog && showLog) console.log(`${name} loaded from Firefox Extension`);
         return;
     }
 
@@ -35,11 +35,11 @@ async function loadResource({ name, isLoaded, sources }) {
                 await loadScriptAsModuleCommon(source.url);
             }
 
-            if (window.ksShowLog) console.log(`${name} loaded from ${source.label} : ${source.url}`);
+            if (window.ksShowLog && showLog) console.log(`${name} loaded from ${source.label} : ${source.url}`);
             return;
         } catch (err) {
             console.error(`${name} failed to load from ${source.label} : ${source.url}`, err);
-            if (window.ksShowLog) console.log(`${name} -failed- from ${source.label} : ${source.url}`);
+            if (window.ksShowLog && showLog) console.log(`${name} -failed- from ${source.label} : ${source.url}`);
         }
     }
 
@@ -80,15 +80,14 @@ try {
         return loadResource({
             name: resourceConfig.name,
             isLoaded: createIsLoadedCheck(resourceConfig.isLoadedCheck),
-            sources: resourceConfig.sources
+            sources: resourceConfig.sources,
+            showLog: resourceConfig.showLog !== false // default to true if undefined
         });
     });
 
     await Promise.all(loadPromises);
 } catch (error) {
     console.error("Failed to load resources configuration:", error);
-}
-
-// await Promise.all([
+};
 //     ensureTableBuilder()
 // ]);
