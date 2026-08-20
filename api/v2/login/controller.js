@@ -1,4 +1,3 @@
-import { getAllUsers } from './repository.js';
 import { verifyAndGenerateToken } from './service.js';
 
 const loginUser = (req, res) => {
@@ -9,12 +8,9 @@ const loginUser = (req, res) => {
     }
 
     try {
-        const users = getAllUsers();
-        
         const token = verifyAndGenerateToken({ 
             inUserName: UserName, 
-            inPassword: Password, 
-            inUsers: users 
+            inPassword: Password 
         });
 
         if (!token) {

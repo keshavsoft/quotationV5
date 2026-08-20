@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
+import { getAllUsers } from './repository.js';
 
-export const verifyAndGenerateToken = ({ inUserName, inPassword, inUsers }) => {
+export const verifyAndGenerateToken = ({ inUserName, inPassword }) => {
     const localUserName = inUserName;
     const localPassword = inPassword;
-    const localUsers = inUsers;
 
-    const user = localUsers.find(u => u.UserName === localUserName && u.Password === localPassword);
+    const users = getAllUsers();
+    const user = users.find(u => u.UserName === localUserName && u.Password === localPassword);
     
     if (!user) {
         return null;
