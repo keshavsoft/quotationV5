@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Authentication Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #output {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JWT Authentication Demo</h1>
+
+    <div>
+        <button id="btnLogin">1. Login (Get Token)</button>
+        <button id="btnFetch">2. Fetch Protected Data</button>
+        <button id="btnClear">3. Clear Token</button>
+    </div>
+
+    <h3>Output:</h3>
+    <div id="output">Ready...</div>
+
+    <script>
+        const btnLogin = document.getElementById('btnLogin');
+        const btnFetch = document.getElementById('btnFetch');
+        const btnClear = document.getElementById('btnClear');
+        const output = document.getElementById('output');
+
+        let myToken = null; // We will store the token here in memory
+
+        function log(message, isError = false) {
+            output.innerHTML = `<span class="${isError ? 'error' : 'success'}">${message}</span>`;
+        }
+
+        // 1. Login to get the token
+        btnLogin.addEventListener('click', async () => {
+            try {
+                log('Logging in...');
+                const response = await fetch('/api/v2/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ UserName: '9011', Password: '901' })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    myToken = data.token;
+                    log(`Login successful!\n\nToken received:\n${myToken}`);
+
+                    // You can also save it to localStorage so it survives page reloads:
+                    // localStorage.setItem('saved_jwt', myToken);
+                } else {
+                    log(`Login failed: ${data.error || 'Unknown error'}`, true);
+                }
+            } catch (error) {
+                log(`Error: ${error.message}`, true);
+            }
+        });
+
+        // 2. Fetch Protected Data by supplying the token
+        btnFetch.addEventListener('click', async () => {
+            if (!myToken) {
+                log('No token! Please login first.', true);
+                return;
+            }
+
+            try {
+                log('Fetching protected data...');
+                const response = await fetch('/api/v2/StockItems/showAll', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // SUPPLY THE TOKEN HERE IN THE AUTHORIZATION HEADER
+                        'Authorization': `Bearer ${myToken}`
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    log(`Success! Fetched ${data.length} items.\n\nFirst item:\n${JSON.stringify(data[0], null, 2)}`);
+                } else {
+                    log(`Access Denied! Server response: ${JSON.stringify(data)}`, true);
+                }
+            } catch (error) {
+                log(`Fetch Error: ${error.message}`, true);
+            }
+        });
+
+        // 3. Clear token
+        btnClear.addEventListener('click', () => {
+            myToken = null;
+            log('Token cleared. Try fetching data now (it should fail).');
+        });
+    </script>
+</body>
+
+</html>

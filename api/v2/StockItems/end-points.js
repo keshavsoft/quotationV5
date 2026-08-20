@@ -1,6 +1,7 @@
 import express from 'express';
 
 import funcFromshowAll from './showAll/controller.js';
+import { verifyJwt } from '../middleware/jwtAuth.js';
 import findByVoucherNumber from './findByVoucherNumber/controller.js';
 import findByVoucherNumberAndType from './findByVoucherNumberAndType/controller.js';
 import getInventoryColumn from './getInventoryColumn/controller.js';
@@ -16,7 +17,7 @@ const configPath = "Config/Schemas/StockItems.json";
 
 const router = express.Router();
 
-router.get('/showAll', (req, res) => funcFromshowAll({ req, res, inTablePath: tablePath }));
+router.get('/showAll', verifyJwt, (req, res) => funcFromshowAll({ req, res, inTablePath: tablePath }));
 router.get('/findByVoucherNumber/:vounum', (req, res) => findByVoucherNumber({ req, res, inTablePath: tablePath }));
 router.get('/findByVoucherNumberAndType/:vchtype/:vounum', (req, res) => findByVoucherNumberAndType({ req, res, inTablePath: tablePath }));
 router.get('/getInventoryColumn', (req, res) => getInventoryColumn({ req, res, inTablePath: tablePath }));
